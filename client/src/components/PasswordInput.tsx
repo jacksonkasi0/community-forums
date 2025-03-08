@@ -7,7 +7,7 @@ import * as Clerk from "@clerk/elements/common";
 
 interface PasswordInputProps {
   id: string;
-  validatePassword?: boolean; // Optional prop to enable Clerk's password validation
+  validatePassword?: boolean;
 }
 
 export const PasswordInput: React.FC<PasswordInputProps> = ({
@@ -30,7 +30,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         <Input
           id={id}
           className={cn(
-            "pr-10", // Space for the toggle button
+            "pr-10",
             "bg-card text-card-foreground border-border",
             "focus:ring-2 focus:ring-ring focus:border-primary",
             "transition-colors duration-200"
