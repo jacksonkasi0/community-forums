@@ -3,7 +3,11 @@ import { Webhook } from "svix";
 import { users } from "@/db/schema/tbl_users";
 import { Bindings } from "@/types/common";
 
-const webhookApi = new Hono<{ Bindings: Bindings }>();
+import { eq } from "drizzle-orm";
+
+const webhookApi = new Hono<{
+  Bindings: Bindings;
+}>();
 
 // POST /api/webhooks/clerk - Handle Clerk webhook events
 webhookApi.post("/clerk", async (c) => {
@@ -43,39 +47,60 @@ webhookApi.post("/clerk", async (c) => {
     return c.json({ error: "Invalid webhook signature" }, 400);
   }
 
+  // Common user data preparation function
+  const prepareUserData = (data: any) => ({
+    user_id: data.id,
+    email: data.email_addresses[0]?.email_address || "",
+    name:
+      data.first_name || data.last_name
+        ? `${data.first_name || ""} ${data.last_name || ""}`.trim()
+        : "Unnamed User",
+    profile_pic: data.image_url || null,
+    created_at: new Date(), // For user.created; ignored in user.updated
+  });
+
   // Handle user.created event
   if (event.type === "user.created") {
-    const { id, email_addresses, first_name, last_name, image_url } =
-      event.data;
+    const newUser = prepareUserData(event.data);
 
-    // Prepare user data for insertion
-    const newUser = {
-      user_id: id, // Clerk user ID
-      email: email_addresses[0]?.email_address || "",
-      name:
-        first_name || last_name
-          ? `${first_name || ""} ${last_name || ""}`.trim()
-          : "Unnamed User",
-      profile_pic: image_url || null,
-      created_at: new Date(), // Use current timestamp; Clerk's created_at is in milliseconds
-    };
-
-    // Insert or update user in the database (upsert)
     try {
       await db.insert(users).values(newUser).onConflictDoUpdate({
         target: users.user_id,
         set: newUser,
       });
 
-      console.log(`User ${id} synced to database`);
+      console.log(`User ${newUser.user_id} synced to database (created)`);
       return c.json({ message: "User created and synced successfully" }, 200);
     } catch (err) {
-      console.error("Database error:", err);
+      console.error("Database error (user.created):", err);
       return c.json({ error: "Failed to sync user to database" }, 500);
     }
   }
 
-  // skipped event types
+  // Handle user.updated event
+  if (event.type === "user.updated") {
+    const updatedUser = prepareUserData(event.data);
+
+    try {
+      await db
+        .update(users)
+        .set({
+          email: updatedUser.email,
+          name: updatedUser.name,
+          profile_pic: updatedUser.profile_pic,
+          updated_at: new Date(),
+        })
+        .where(eq(users.user_id, updatedUser.user_id));
+
+      console.log(`User ${updatedUser.user_id} updated in database`);
+      return c.json({ message: "User updated successfully" }, 200);
+    } catch (err) {
+      console.error("Database error (user.updated):", err);
+      return c.json({ error: "Failed to update user in database" }, 500);
+    }
+  }
+
+  // Skipped event types
   return c.json({ message: "Webhook received but no action taken" }, 200);
 });
 
