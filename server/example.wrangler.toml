@@ -11,6 +11,9 @@ mode = "smart"
 [observability]
 enabled = true
 
+[env.production]
+name = "community-forums-server"
+
 [env.production.vars]
 NODE_ENV = "production"
 NODE_VERSION="20.0.0" # Define the Node version to avoid build errors.
@@ -19,6 +22,8 @@ CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxxxxxxxxx"
 SIGNING_SECRET="xxxxxxxxxxxxxxxxxxx"
 DATABASE_URL = "xxxxxxxxxxxxxxxxxxx"
 
+[env.development]
+name = "community-forums-server-dev"
 
 [env.development.vars]
 NODE_ENV = "development"
