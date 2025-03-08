@@ -1,10 +1,10 @@
 'use client';
-import { LoginForm } from "./LoginForm";
+import SignInPage from "./SignInPage";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-white">
-      <LoginForm />
+      <SignInPage />
     </main>
   );
 };

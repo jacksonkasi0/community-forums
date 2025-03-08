@@ -15,7 +15,7 @@ import { GoogleIco } from "@/assets/icons/Google";
 import { GithubIco } from "@/assets/icons/Github";
 import LogoImg from "@/assets/images/logo.png";
 
-export const LoginForm: React.FC = () => {
+export default function SignInPage() {
   const [rememberMe, setRememberMe] = useState(false);
 
   const socialProviders = [
