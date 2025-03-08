@@ -2,10 +2,10 @@ import { Hono } from "hono";
 import { users } from "@/db/schema/tbl_users";
 import { eq } from "drizzle-orm";
 
-const route = new Hono();
+const api = new Hono();
 
 // GET /api/user/profile - Fetch authenticated user's profile
-route.get("/profile", async (c) => {
+api.get("/profile", async (c) => {
   const user = c.get("user");
   const db = c.get("db");
 
@@ -31,4 +31,4 @@ route.get("/profile", async (c) => {
   return c.json(userProfile[0]);
 });
 
-export default route;
+export default api;
