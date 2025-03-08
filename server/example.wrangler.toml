@@ -8,6 +8,9 @@ compatibility_flags = [ "nodejs_compat" ]
 [placement]
 mode = "smart"
 
+[observability]
+enabled = true # Enable observability to monitor your application workers logs.
+
 [vars]
 NODE_VERSION="20.0.0" # Define the Node version to avoid build errors.
 # route = "server.xxxxxxxx.com/*" # Assign your worker to this domain
