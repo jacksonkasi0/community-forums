@@ -9,12 +9,9 @@ compatibility_flags = [ "nodejs_compat" ]
 mode = "smart"
 
 [vars]
-
 NODE_VERSION="20.0.0" # Define the Node version to avoid build errors.
-
 # route = "server.xxxxxxxx.com/*" # Assign your worker to this domain
 database_url = "xxxxxxx"
-
 
 [vars.production]
 NODE_ENV = "production"
