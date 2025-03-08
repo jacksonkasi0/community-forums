@@ -3,19 +3,16 @@ import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import * as Clerk from "@clerk/elements/common";
 
 interface PasswordInputProps {
   id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
+  validatePassword?: boolean; // Optional prop to enable Clerk's password validation
 }
 
 export const PasswordInput: React.FC<PasswordInputProps> = ({
   id,
-  value,
-  onChange,
-  placeholder = "Enter your password",
+  validatePassword = false,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -25,19 +22,21 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
 
   return (
     <div className="relative">
-      <Input
-        id={id}
+      <Clerk.Input
         type={showPassword ? "text" : "password"}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className={cn(
-          "pr-10",
-          "bg-card text-card-foreground border-border",
-          "focus:ring-2 focus:ring-ring focus:border-primary",
-          "transition-colors duration-200"
-        )}
-      />
+        validatePassword={validatePassword}
+        asChild
+      >
+        <Input
+          id={id}
+          className={cn(
+            "pr-10", // Space for the toggle button
+            "bg-card text-card-foreground border-border",
+            "focus:ring-2 focus:ring-ring focus:border-primary",
+            "transition-colors duration-200"
+          )}
+        />
+      </Clerk.Input>
       <Button
         type="button"
         variant="ghost"
@@ -50,11 +49,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         )}
         aria-label={showPassword ? "Hide password" : "Show password"}
       >
-        {showPassword ? (
-          <EyeOff className="h-4 w-4" />
-        ) : (
-          <Eye className="h-4 w-4" />
-        )}
+        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
       </Button>
     </div>
   );
