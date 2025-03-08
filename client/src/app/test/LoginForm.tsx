@@ -47,7 +47,7 @@ export const LoginForm: React.FC = () => {
               {socialProviders.map((provider) => (
                 <Clerk.Connection
                   key={provider.provider}
-                  name={provider.provider.toLowerCase() as any}
+                  name={provider.provider.toLowerCase() as "google" | "github"}
                   asChild
                 >
                   <SocialLoginButton
@@ -57,7 +57,7 @@ export const LoginForm: React.FC = () => {
                   >
                     <Clerk.Loading
                       scope={
-                        `provider:${provider.provider.toLowerCase()}` as any
+                        `provider:${provider.provider.toLowerCase()}` as 'provider:google' | 'provider:github'
                       }
                     >
                       {(isLoading) =>
