@@ -1,6 +1,9 @@
 import { Hono } from "hono";
+
+// ** Middleware
 import { authMiddleware } from "@/middleware/auth";
 
+// ** Routes
 import userRoutes from "./user";
 import webhookApi from "./webhooks/clerk";
 
@@ -11,15 +14,8 @@ export const routes = new Hono();
 routes.route("/webhooks", webhookApi);
 routes.get("/test", (c) => c.json({ message: "Hello, world!" }));
 
+
 // Private routes (require authentication)
-// Create a new instance for private routes
-const privateRoutes = new Hono();
-
-// Apply authMiddleware to all private routes
-privateRoutes.use("*", authMiddleware);
-
-// Mount user routes
-privateRoutes.route("/", userRoutes);
-
-// Mount the private routes under the /user prefix
-routes.route("/user", privateRoutes);
+// Attach authMiddleware to all routes under "/user"
+routes.use("/user/*", authMiddleware);
+routes.route("/user", userRoutes);
