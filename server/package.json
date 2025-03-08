@@ -1,5 +1,5 @@
 {
-    "name": "server",
+    "name": "community-forums-server",
     "scripts": {
         "dev": "wrangler dev --env development",
         "dev:remote": "wrangler dev --remote --env development",
