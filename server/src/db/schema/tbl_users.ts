@@ -11,6 +11,7 @@ export const users = pgTable('users', {
   name: text('name').notNull(),
   profile_pic: text('profile_pic'),
   created_at: timestamp('created_at').defaultNow().notNull(),
+  updated_at: timestamp('updated_at').defaultNow().notNull(),
 });
 
 // Type definitions

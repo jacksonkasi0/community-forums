@@ -1,0 +1,1 @@
+ALTER TABLE "tbl_users" ADD COLUMN "updated_at" timestamp DEFAULT now() NOT NULL;

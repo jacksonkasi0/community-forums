@@ -56,7 +56,7 @@ webhookApi.post("/clerk", async (c) => {
         ? `${data.first_name || ""} ${data.last_name || ""}`.trim()
         : "Unnamed User",
     profile_pic: data.image_url || null,
-    created_at: new Date(), // For user.created; ignored in user.updated
+    created_at: new Date(),
   });
 
   // Handle user.created event
