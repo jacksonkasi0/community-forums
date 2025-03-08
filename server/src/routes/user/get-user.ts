@@ -1,6 +1,10 @@
 import { Hono } from "hono";
-import { users } from "@/db/schema/tbl_users";
+
+// ** ORM
 import { eq } from "drizzle-orm";
+
+// ** Schema
+import { users } from "@/db/schema/tbl_users";
 
 const api = new Hono();
 
