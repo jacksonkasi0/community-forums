@@ -21,7 +21,8 @@ routes.route("/", privateRoutes);
 
 // Public routes (no authentication required)
 // Mount webhook routes under /webhooks
-// routes.route("/webhooks", webhookApi);
+routes.route("/webhooks", webhookApi);
+
 routes.get("/test", async (c: any) => {
     return c.json({ message: "Hello, world!" });
 });
