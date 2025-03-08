@@ -35,6 +35,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
             "focus:ring-2 focus:ring-ring focus:border-primary",
             "transition-colors duration-200"
           )}
+          placeholder="Enter your password"
         />
       </Clerk.Input>
       <Button
@@ -49,7 +50,11 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         )}
         aria-label={showPassword ? "Hide password" : "Show password"}
       >
-        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+        {showPassword ? (
+          <EyeOff className="h-4 w-4" />
+        ) : (
+          <Eye className="h-4 w-4" />
+        )}
       </Button>
     </div>
   );
