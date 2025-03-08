@@ -94,6 +94,7 @@ export default function SignInPage() {
                       type="submit"
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                       disabled={isGlobalLoading}
+                      size='lg'
                     >
                       <Clerk.Loading>
                         {(isLoading) =>
@@ -160,6 +161,7 @@ export default function SignInPage() {
                       <Button
                         className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                         disabled={isGlobalLoading}
+                        size='lg'
                       >
                         <Clerk.Loading>
                           {(isLoading) =>
@@ -214,6 +216,7 @@ export default function SignInPage() {
                       <Button
                         className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                         disabled={isGlobalLoading}
+                        size='lg'
                       >
                         <Clerk.Loading>
                           {(isLoading) =>
@@ -266,6 +269,7 @@ export default function SignInPage() {
                     <Button
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                       disabled={isGlobalLoading}
+                      size='lg'
                     >
                       <Clerk.Loading>
                         {(isLoading) =>
@@ -310,6 +314,7 @@ export default function SignInPage() {
                     <Button
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                       disabled={isGlobalLoading}
+                      size='lg'
                     >
                       <Clerk.Loading>
                         {(isLoading) =>
