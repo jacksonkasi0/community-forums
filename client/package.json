@@ -1,5 +1,5 @@
 {
-  "name": "community-forums",
+  "name": "Forem",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/elements": "^0.23.1",
     "@clerk/nextjs": "^6.12.4",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.2",
