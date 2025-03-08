@@ -2,10 +2,11 @@
 import type { Config } from "drizzle-kit";
 
 export default {
-  schema: "./src/schema/index.ts", // Path to your schema file
+  schema: "./src/db/schema/index.ts", // Path to your schema file
   out: "./drizzle", // Output directory for generated code
   dialect: "postgresql",
-  // dbCredentials: {
-  //   url: process.env.DATABASE_URL,
-  // },
+  dbCredentials: {
+    // @ts-ignore
+    url: process.env.DATABASE_URL,
+  },
 } satisfies Config;
