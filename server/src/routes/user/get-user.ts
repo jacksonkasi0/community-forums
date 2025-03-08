@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 
 const route = new Hono();
 
-// GET /api/profile - Fetch authenticated user's profile
+// GET /api/user/profile - Fetch authenticated user's profile
 route.get("/profile", async (c) => {
   const user = c.get("user");
   const db = c.get("db");
