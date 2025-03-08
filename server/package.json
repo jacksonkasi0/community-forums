@@ -1,9 +1,9 @@
 {
     "name": "server",
     "scripts": {
-        "dev": "wrangler dev",
-        "dev:remote": "wrangler dev --remote",
-        "deploy": "wrangler deploy --minify",
+        "dev": "wrangler dev --env development",
+        "dev:remote": "wrangler dev --remote --env development",
+        "deploy": "wrangler deploy --minify --env production",
         "db:push": "drizzle-kit push",
         "db:generate": "drizzle-kit generate"
     },

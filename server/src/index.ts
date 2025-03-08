@@ -1,6 +1,5 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-// import { authMiddleware } from '@/middleware/auth';
 import { routes } from '@/routes';
 import { Bindings } from '@/types/common';
 import { createDb } from '@/db';
@@ -25,10 +24,6 @@ app.use('*', async (c, next) => {
 app.get('/', (c) => {
   return c.text('Server is running');
 });
-
-// const privateApi = new Hono<{ Bindings: Bindings }>();
-// privateApi.use('*', authMiddleware);
-// privateApi.route('/', );
 
 app.route('/api', routes);
 

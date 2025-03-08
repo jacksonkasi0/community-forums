@@ -1,6 +1,6 @@
 #:schema node_modules/wrangler/config-schema.json
 
-name = "server"
+name = "community-forums-server"
 main = "src/index.ts"
 compatibility_date = "2025-01-08"
 compatibility_flags = [ "nodejs_compat" ]
@@ -9,21 +9,21 @@ compatibility_flags = [ "nodejs_compat" ]
 mode = "smart"
 
 [observability]
-enabled = true # Enable observability to monitor your application workers logs.
+enabled = true
 
-[vars]
-NODE_VERSION="20.0.0" # Define the Node version to avoid build errors.
-# route = "server.xxxxxxxx.com/*" # Assign your worker to this domain
-database_url = "xxxxxxx"
-
-[vars.production]
+[env.production.vars]
 NODE_ENV = "production"
-CLERK_SECRET_KEY = "xxxxxxxx"
-CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxx"
-SIGNING_SECRET = "xxxxxxxxxxxx"
+NODE_VERSION="20.0.0" # Define the Node version to avoid build errors.
+CLERK_SECRET_KEY="xxxxxxxxxxxxxxxxxxx"
+CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxxxxxxxxx"
+SIGNING_SECRET="xxxxxxxxxxxxxxxxxxx"
+DATABASE_URL = "xxxxxxxxxxxxxxxxxxx"
 
-[vars.development]
+
+[env.development.vars]
 NODE_ENV = "development"
-CLERK_SECRET_KEY = "xxxxxxxxxxxx"
-CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxx"
-SIGNING_SECRET = "xxxxxxxxxxxx"
+NODE_VERSION="20.0.0"
+CLERK_SECRET_KEY="xxxxxxxxxxxxxxxxxxx"
+CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxxxxxxxxx"
+SIGNING_SECRET="xxxxxxxxxxxxxxxxxxx"
+DATABASE_URL = "xxxxxxxxxxxxxxxxxxx"
