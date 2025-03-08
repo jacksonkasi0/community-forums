@@ -17,8 +17,10 @@ database_url = "xxxxxxx"
 NODE_ENV = "production"
 CLERK_SECRET_KEY = "xxxxxxxx"
 CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxx"
+SIGNING_SECRET = "xxxxxxxxxxxx"
 
 [vars.development]
 NODE_ENV = "development"
 CLERK_SECRET_KEY = "xxxxxxxxxxxx"
 CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxx"
+SIGNING_SECRET = "xxxxxxxxxxxx"
