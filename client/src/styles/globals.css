@@ -4,7 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @theme {
   --animate-caret-blink: caret-blink 1.25s ease-out infinite; /* Support Clerk Shadcn/ui OTP - Email verification*/
 
