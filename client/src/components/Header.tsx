@@ -22,7 +22,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="mr-4 md:hidden"
+            className="mr-4 md:hidden cursor-pointer"
             aria-label="Menu"
           >
             <Menu size={24} className="text-foreground" />
@@ -48,7 +48,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden ml-auto mr-3 bg-muted"
+            className="md:hidden ml-auto mr-3 bg-muted cursor-pointer"
             aria-label="Search"
           >
             <Search size={24} className="text-foreground" />
