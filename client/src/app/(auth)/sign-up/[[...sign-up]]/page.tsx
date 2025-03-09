@@ -1,17 +1,28 @@
 "use client";
+
 import React from "react";
+
+// ** Clerk Authentication
 import * as Clerk from "@clerk/elements/common";
 import * as SignUp from "@clerk/elements/sign-up";
-import { SocialLoginButton } from "@/components/SocialLoginButton";
-import { PasswordInput } from "@/components/PasswordInput";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
+// ** Assets &  Icons
 import { Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { GoogleIco } from "@/assets/icons/Google";
 import { GithubIco } from "@/assets/icons/Github";
 import LogoImg from "@/assets/images/logo.png";
+
+// ** UI Components
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+// ** Authentication Components
+import { SocialLoginButton } from "@/components/auth/SocialLoginButton";
+import { PasswordInput } from "@/components/auth/PasswordInput";
+
+// ** Utilities
+import { cn } from "@/lib/utils";
 
 export default function SignUpPage() {
   const socialProviders = [

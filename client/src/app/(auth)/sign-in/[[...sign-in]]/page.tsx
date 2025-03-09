@@ -1,18 +1,31 @@
 "use client";
+
 import React, { useState } from "react";
+
+// ** Icons
+import { Loader2 } from "lucide-react";
+
+// ** Clerk Authentication
 import * as Clerk from "@clerk/elements/common";
 import * as SignIn from "@clerk/elements/sign-in";
-import { SocialLoginButton } from "@/components/SocialLoginButton";
-import { PasswordInput } from "@/components/PasswordInput";
+
+// ** UI Components
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Checkbox } from "@/components/ui/checkbox";
+
+// ** Components
+import { SocialLoginButton } from "@/components/auth/SocialLoginButton";
+import { PasswordInput } from "@/components/auth/PasswordInput";
+
+// ** Icons & Assets
 import { GoogleIco } from "@/assets/icons/Google";
 import { GithubIco } from "@/assets/icons/Github";
 import LogoImg from "@/assets/images/logo.png";
-import { Checkbox } from "@/components/ui/checkbox";
+
+// ** Utilities
+import { cn } from "@/lib/utils";
 
 export default function SignInPage() {
   const [rememberMe, setRememberMe] = useState(false);
@@ -293,7 +306,7 @@ export default function SignInPage() {
                   <h2 className="text-2xl font-bold text-foreground">
                     Set new password
                   </h2>
-                  
+
                   <Clerk.Field name="password" className="space-y-2">
                     <Clerk.Label asChild>
                       <Label className="text-base text-foreground">New Password</Label>
