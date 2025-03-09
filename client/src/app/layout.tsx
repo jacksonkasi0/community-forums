@@ -15,6 +15,9 @@ import "@/styles/globals.css";
 // ** Layout
 import Layout from "@/layout";
 
+// ** Components
+import { ThemeProvider } from "@/components/theme-provider"
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -70,13 +73,20 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+            <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
           <NuqsAdapter>
             <Layout>{children}</Layout>
           </NuqsAdapter>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
