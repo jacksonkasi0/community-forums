@@ -3,7 +3,11 @@
 import React from "react";
 
 // ** UI Components
-import { Sidebar, SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import {
+  Sidebar,
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
 // ** Custom Components
@@ -40,20 +44,8 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
         {/* Main content wrapped in a 12-column grid */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-12 gap-6 mx-auto max-w-full">
-            {/* Empty left spacer on larger screens */}
-            <div className="hidden md:block md:col-span-1 lg:col-span-1" />
-            {/* Main content centered */}
-            <main
-              className={cn(
-                "col-span-12 md:col-span-10 lg:col-span-10",
-                "w-full"
-              )}
-            >
-              {children}
-            </main>
-            {/* Empty right spacer on larger screens */}
-            <div className="hidden md:block md:col-span-1 lg:col-span-1" />
+          <div className="max-w-[1280px] mx-auto">
+            <main>{children}</main>
           </div>
         </div>
       </SidebarInset>

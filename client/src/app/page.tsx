@@ -5,22 +5,22 @@ import FeedSkeleton from "@/components/feed/FeedSkeleton";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-12 gap-6 py-4 w-full">
-      {/* Sidebar (Left) - 3 columns */}
-      <div className="col-span-12 md:col-span-3">
+    <div className="grid grid-cols-12 gap-6 py-4 w-full bg-red-300">
+      {/* Left Sidebar: hidden below md; 4 columns on md, 3 columns on lg */}
+      <div className="hidden md:block md:col-span-4 lg:col-span-3">
         <AsidePrimarySidebar />
       </div>
 
-      {/* Main Content - 6 columns */}
-      <main className="col-span-12 md:col-span-6 space-y-6">
+      {/* Main Content: full width on small screens; 8 columns on md, 6 columns on lg */}
+      <main className="col-span-12 md:col-span-8 lg:col-span-6 space-y-6">
         <h1 className="text-2xl font-bold text-foreground">Feed</h1>
         <div className="grid gap-6">
           <FeedSkeleton count={50} />
         </div>
       </main>
 
-      {/* Right Sidebar - 3 columns */}
-      <aside className="col-span-12 md:col-span-3">
+      {/* Right Sidebar: hidden on screens smaller than lg; 3 columns on lg */}
+      <aside className="hidden lg:block lg:col-span-3">
         <h1 className="text-2xl font-bold text-foreground">Right Sidebar</h1>
       </aside>
     </div>
