@@ -12,10 +12,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 // ** Global Styles
 import "@/styles/globals.css";
 
-// import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-
-// ** Components
-import Header from "@/components/Header";
+// ** Layout
 import Layout from "@/layout";
 
 
@@ -79,7 +76,6 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <NuqsAdapter>
-            {/* <Header /> */}
             <Layout>{children}</Layout>
           </NuqsAdapter>
         </body>
