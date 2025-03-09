@@ -38,11 +38,11 @@ export const metadata: Metadata = {
     title: "Community Forums - Connect & Collaborate",
     description:
       "Join our vibrant community to discuss ideas, ask questions, and collaborate with developers worldwide.",
-    url: "https://forem.dev/", // TODO: Update this URL if needed
+    url: "https://forums-x.vercel.app/",
     siteName: "Community Forums",
     images: [
       {
-        url: "https://forem.dev/remoteimages/uploads/articles/hyjs04hjka95n1lkxb68.png",
+        url: "https://forums-x.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Community Forums Preview",
