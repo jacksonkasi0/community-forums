@@ -1,27 +1,26 @@
 "use client";
-
 import React from "react";
 
-// ** Clerk Authentication
+// Clerk Authentication
 import * as Clerk from "@clerk/elements/common";
 import * as SignUp from "@clerk/elements/sign-up";
 
-// ** Assets &  Icons
+// Assets & Icons
 import { Loader2 } from "lucide-react";
 import { GoogleIco } from "@/assets/icons/Google";
 import { GithubIco } from "@/assets/icons/Github";
 import LogoImg from "@/assets/images/logo.png";
 
-// ** UI Components
+// UI Components
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-// ** Authentication Components
+// Authentication Components
 import { SocialLoginButton } from "@/components/auth/SocialLoginButton";
 import { PasswordInput } from "@/components/auth/PasswordInput";
 
-// ** Utilities
+// Utilities
 import { cn } from "@/lib/utils";
 
 export default function SignUpPage() {
@@ -31,66 +30,66 @@ export default function SignUpPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center text-sm pt-10 pb-[94px] px-20 max-md:px-5 bg-background">
+    <div className="flex flex-col items-center text-sm pt-6 px-4 sm:px-6 md:px-8 pb-6 bg-background min-h-screen">
       <SignUp.Root path="/sign-up" routing="path">
         <Clerk.Loading>
           {(isGlobalLoading) => (
-            <div className="flex w-[544px] max-w-full flex-col items-stretch">
+            <div className="flex w-full max-w-md flex-col items-center">
               {/* Logo Section */}
               <img
                 src={LogoImg.src}
                 alt="Forem Logo"
-                className="aspect-[2.38] w-[114px] self-center max-w-full"
+                className="w-28 max-w-full h-auto self-center mb-6"
               />
 
-              <h1 className="text-3xl font-bold leading-none text-center self-center mt-8 text-foreground">
+              <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-center text-foreground">
                 Join the Forem Community
               </h1>
 
-              <p className="text-base text-center self-center mt-[17px] text-muted-foreground">
+              <p className="text-sm sm:text-base text-center mt-4 text-muted-foreground">
                 Connect with 2,893,476 amazing developers worldwide
               </p>
 
               {/* Social Login Buttons */}
-              {socialProviders.map((provider) => (
-                <Clerk.Connection
-                  key={provider.provider}
-                  name={provider.provider.toLowerCase() as "google" | "github"}
-                  asChild
-                >
-                  <SocialLoginButton
-                    icon={provider.icon}
-                    provider={provider.provider}
-                    disabled={isGlobalLoading}
+              <div className="w-full space-y-3 mt-6">
+                {socialProviders.map((provider) => (
+                  <Clerk.Connection
+                    key={provider.provider}
+                    name={provider.provider.toLowerCase() as "google" | "github"}
+                    asChild
                   >
-                    <Clerk.Loading
-                      scope={
-                        `provider:${provider.provider.toLowerCase()}` as `provider:${
-                          | "google"
-                          | "github"}`
-                      }
+                    <SocialLoginButton
+                      icon={provider.icon}
+                      provider={provider.provider}
+                      disabled={isGlobalLoading}
                     >
-                      {(isLoading) =>
-                        isLoading ? (
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                        ) : null
-                      }
-                    </Clerk.Loading>
-                  </SocialLoginButton>
-                </Clerk.Connection>
-              ))}
+                      <Clerk.Loading
+                        scope={
+                          `provider:${provider.provider.toLowerCase()}` as `provider:${"google" | "github"}`
+                        }
+                      >
+                        {(isLoading) =>
+                          isLoading ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : null
+                        }
+                      </Clerk.Loading>
+                    </SocialLoginButton>
+                  </Clerk.Connection>
+                ))}
+              </div>
 
               {/* Divider */}
-              <div className="relative flex items-center justify-center mt-[22px]">
+              <div className="relative flex items-center justify-center mt-6 w-full">
                 <div className="bg-border h-px w-full absolute" />
-                <span className="bg-card relative px-[18px] py-1.5 text-foreground">
+                <span className="bg-background relative px-4 py-1.5 text-foreground text-sm">
                   OR
                 </span>
               </div>
 
               {/* Registration Steps */}
               <SignUp.Step name="start">
-                <div className="space-y-6">
+                <div className="w-full space-y-6 mt-6">
                   <Clerk.Field name="emailAddress" className="space-y-2">
                     <Clerk.Label asChild>
                       <Label className="text-base text-foreground">Email</Label>
@@ -98,7 +97,7 @@ export default function SignUpPage() {
                     <Clerk.Input type="email" required asChild>
                       <Input
                         placeholder="Enter your email"
-                        className="bg-card text-card-foreground border-border focus:ring-2 focus:ring-ring focus:border-primary transition-colors duration-200"
+                        className="w-full bg-card text-card-foreground border-border focus:ring-2 focus:ring-ring focus:border-primary transition-colors duration-200"
                       />
                     </Clerk.Input>
                     <Clerk.FieldError className="block text-sm text-destructive" />
@@ -106,9 +105,7 @@ export default function SignUpPage() {
 
                   <Clerk.Field name="password" className="space-y-2">
                     <Clerk.Label asChild>
-                      <Label className="text-base text-foreground">
-                        Password
-                      </Label>
+                      <Label className="text-base text-foreground">Password</Label>
                     </Clerk.Label>
                     <PasswordInput id="password" validatePassword={true} />
                     <Clerk.FieldError className="block text-sm text-destructive" />
@@ -135,8 +132,8 @@ export default function SignUpPage() {
                   </SignUp.Action>
                 </div>
 
-                {/* Terms and Signin */}
-                <p className="text-muted-foreground leading-[21px] text-center self-center mt-8">
+                {/* Terms and Sign-in */}
+                <p className="text-muted-foreground text-sm text-center mt-6">
                   By creating an account, you agree to our{" "}
                   <a href="#" className="text-primary hover:underline">
                     terms of service
@@ -145,22 +142,18 @@ export default function SignUpPage() {
                   <a href="#" className="text-primary hover:underline">
                     privacy policy
                   </a>
-                  , <br />
-                  and{" "}
+                  , and{" "}
                   <a href="#" className="text-primary hover:underline">
                     community guidelines
                   </a>
                   .
                 </p>
 
-                <div className="bg-border h-px w-full mt-[26px]" />
+                <div className="bg-border h-px w-full mt-6" />
 
-                <p className="text-base text-center self-center mt-[31px] text-foreground">
+                <p className="text-sm text-center mt-6 text-foreground">
                   Already have an account?{" "}
-                  <Clerk.Link
-                    navigate="sign-in"
-                    className="text-primary hover:underline"
-                  >
+                  <Clerk.Link navigate="sign-in" className="text-primary hover:underline">
                     Sign in
                   </Clerk.Link>
                 </p>
@@ -168,17 +161,15 @@ export default function SignUpPage() {
 
               {/* Continue Step */}
               <SignUp.Step name="continue">
-                <div className="space-y-6">
+                <div className="w-full space-y-6">
                   <Clerk.Field name="username" className="space-y-2">
                     <Clerk.Label asChild>
-                      <Label className="text-base text-foreground">
-                        Username
-                      </Label>
+                      <Label className="text-base text-foreground">Username</Label>
                     </Clerk.Label>
                     <Clerk.Input type="text" required asChild>
                       <Input
                         placeholder="Choose a username"
-                        className="bg-card text-card-foreground border-border focus:ring-2 focus:ring-ring focus:border-primary transition-colors duration-200"
+                        className="w-full bg-card text-card-foreground border-border focus:ring-2 focus:ring-ring focus:border-primary transition-colors duration-200"
                       />
                     </Clerk.Input>
                     <Clerk.FieldError className="block text-sm text-destructive" />
@@ -203,7 +194,7 @@ export default function SignUpPage() {
                   </SignUp.Action>
 
                   <SignUp.Action navigate="start" asChild>
-                    <Button variant="link" size="sm">
+                    <Button variant="link" size="sm" className="w-full">
                       Back to previous step
                     </Button>
                   </SignUp.Action>
@@ -213,20 +204,18 @@ export default function SignUpPage() {
               {/* Verification Step */}
               <SignUp.Step name="verifications">
                 <SignUp.Strategy name="email_code">
-                  <div className="space-y-4">
+                  <div className="w-full space-y-6">
                     <div className="space-y-2">
-                      <h2 className="text-2xl font-bold text-foreground">
+                      <h2 className="text-xl sm:text-2xl font-bold text-foreground text-center">
                         Verify your email
                       </h2>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-sm text-center">
                         Enter the verification code sent to your email address
                       </p>
                     </div>
 
                     <Clerk.Field name="code" className="space-y-2">
-                      <Clerk.Label className="sr-only">
-                        Verification Code
-                      </Clerk.Label>
+                      <Clerk.Label className="sr-only">Verification Code</Clerk.Label>
                       <Clerk.Input
                         type="otp"
                         autoSubmit
@@ -254,7 +243,6 @@ export default function SignUpPage() {
                       <Clerk.FieldError className="block text-sm text-destructive text-center" />
                     </Clerk.Field>
 
-                    {/* Add Submit Button */}
                     <SignUp.Action submit asChild>
                       <Button
                         className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
@@ -277,19 +265,16 @@ export default function SignUpPage() {
                       resend
                       asChild
                       fallback={({ resendableAfter }) => (
-                        <Button variant="link" size="sm" disabled>
+                        <Button variant="link" size="sm" disabled className="w-full">
                           Didn’t receive a code? Resend (
-                          <span className="tabular-nums">
-                            {resendableAfter}
-                          </span>
-                          )
+                          <span className="tabular-nums">{resendableAfter}</span>)
                         </Button>
                       )}
                     >
                       <Button
                         variant="link"
                         size="sm"
-                        className="text-muted-foreground cursor-pointer"
+                        className="w-full text-muted-foreground"
                       >
                         Didn’t receive a code? Resend
                       </Button>
