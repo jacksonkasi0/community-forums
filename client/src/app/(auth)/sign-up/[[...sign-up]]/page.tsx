@@ -30,7 +30,8 @@ export default function SignUpPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center text-sm pt-6 px-4 sm:px-6 md:px-8 pb-6 bg-background min-h-screen">
+    <div className="flex flex-col items-center bg-background min-h-screen">
+    <div className="text-sm pt-6 px-4 sm:px-6 md:px-8 pb-6">
       <SignUp.Root path="/sign-up" routing="path">
         <Clerk.Loading>
           {(isGlobalLoading) => (
@@ -276,6 +277,7 @@ export default function SignUpPage() {
           )}
         </Clerk.Loading>
       </SignUp.Root>
+    </div>
     </div>
   );
 }
