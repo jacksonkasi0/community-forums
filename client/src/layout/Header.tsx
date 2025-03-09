@@ -5,6 +5,8 @@ import Link from "next/link";
 // ** Components
 import AuthButtons from "@/components/auth/AuthButtons";
 import SearchBar from "@/components/SearchBar";
+
+// ** UI Components
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
 // ** Assets
