@@ -21,6 +21,7 @@ CLERK_SECRET_KEY="xxxxxxxxxxxxxxxxxxx"
 CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxxxxxxxxx"
 SIGNING_SECRET="xxxxxxxxxxxxxxxxxxx"
 DATABASE_URL = "xxxxxxxxxxxxxxxxxxx"
+ALLOWED_ORIGIN = "https://forums-x.vercel.app,http://localhost:3000"
 
 [env.development]
 name = "community-forums-server-dev"
@@ -32,3 +33,4 @@ CLERK_SECRET_KEY="xxxxxxxxxxxxxxxxxxx"
 CLERK_PUBLISHABLE_KEY = "xxxxxxxxxxxxxxxxxxx"
 SIGNING_SECRET="xxxxxxxxxxxxxxxxxxx"
 DATABASE_URL = "xxxxxxxxxxxxxxxxxxx"
+ALLOWED_ORIGIN = "https://forums-x.vercel.app,http://localhost:3000"

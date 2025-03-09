@@ -14,7 +14,7 @@ export const verifyAuthToken = async (
 
   // Authenticate the request using the full request object
   const requestState = await clerk.authenticateRequest(c.req.raw, {
-    authorizedParties: ["http://localhost:3000", "http://localhost:8787"],
+    authorizedParties: ["http://localhost:3000", "https://forums-x.vercel.app"],
     // jwtKey: c.env.CLERK_JWT_KEY, // Uncomment for networkless verification
   });
 
