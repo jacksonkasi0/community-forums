@@ -34,7 +34,7 @@ export const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
       type="button"
       size='lg'
     >
-      <IconComponent className="w-5 h-5" />
+      <IconComponent className="size-6" />
       <span className="flex-grow text-center">Continue with {provider}</span>
       {children && <span className="flex-shrink-0">{children}</span>}
     </Button>
