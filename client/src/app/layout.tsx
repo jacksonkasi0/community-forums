@@ -15,7 +15,6 @@ import "@/styles/globals.css";
 // ** Layout
 import Layout from "@/layout";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
