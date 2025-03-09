@@ -156,7 +156,7 @@ export default function MobileSidebar(
               {popularTopics.map((topic) => (
                 <Link
                   key={topic.tag}
-                  href={`/tags/${topic.tag}`}
+                  href={`/tag/${topic.tag}`}
                   className="hover:opacity-80 transition-opacity"
                 >
                   <span
