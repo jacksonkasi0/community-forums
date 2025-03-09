@@ -24,7 +24,7 @@ const Tag: React.FC<TagProps> = ({ name, className }) => {
       className={cn("cursor-pointer px-3 py-1 text-xs font-medium", className)}
       asChild
     >
-      <Link href={`/tag/${tagName}`}>#{tagName}</Link>
+      <Link href={`/tags/${tagName}`}>#{tagName}</Link>
     </Badge>
   );
 };
