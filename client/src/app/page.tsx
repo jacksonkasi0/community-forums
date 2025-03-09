@@ -5,7 +5,7 @@ import FeedSkeleton from "@/components/feed/FeedSkeleton";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-12 gap-6 py-4 w-full bg-red-300">
+    <div className="grid grid-cols-12 gap-6 py-4 w-full">
       {/* Left Sidebar: hidden below md; 4 columns on md, 3 columns on lg */}
       <div className="hidden md:block md:col-span-4 lg:col-span-3">
         <AsidePrimarySidebar />
