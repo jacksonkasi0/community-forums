@@ -34,8 +34,8 @@ export default function SignInPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center bg-background">
-    <div className="text-sm pt-6 px-4 sm:px-6 md:px-8 pb-6 max-w-lg">
+    <div className="flex flex-col items-center bg-background ">
+      <div className="text-sm pt-6 px-4 sm:px-6 md:px-8 pb-6 w-full max-w-lg">
         <SignIn.Root path="/sign-in" routing="path">
           <Clerk.Loading>
             {(isGlobalLoading) => (
@@ -60,7 +60,9 @@ export default function SignInPage() {
                   {socialProviders.map((provider) => (
                     <Clerk.Connection
                       key={provider.provider}
-                      name={provider.provider.toLowerCase() as "google" | "github"}
+                      name={
+                        provider.provider.toLowerCase() as "google" | "github"
+                      }
                       asChild
                     >
                       <SocialLoginButton
@@ -69,10 +71,16 @@ export default function SignInPage() {
                         disabled={isGlobalLoading}
                       >
                         <Clerk.Loading
-                          scope={`provider:${provider.provider.toLowerCase()}` as "provider:google" | "provider:github"}
+                          scope={
+                            `provider:${provider.provider.toLowerCase()}` as
+                              | "provider:google"
+                              | "provider:github"
+                          }
                         >
                           {(isLoading) =>
-                            isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null
+                            isLoading ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : null
                           }
                         </Clerk.Loading>
                       </SocialLoginButton>
@@ -93,7 +101,9 @@ export default function SignInPage() {
                   <div className="w-full space-y-4 md:space-y-6 mt-6">
                     <Clerk.Field name="identifier" className="space-y-2">
                       <Clerk.Label asChild>
-                        <Label className="text-base md:text-sm text-foreground">Email</Label>
+                        <Label className="text-base md:text-sm text-foreground">
+                          Email
+                        </Label>
                       </Clerk.Label>
                       <Clerk.Input type="email" required asChild>
                         <Input
@@ -113,7 +123,11 @@ export default function SignInPage() {
                       >
                         <Clerk.Loading>
                           {(isLoading) =>
-                            isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Continue"
+                            isLoading ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                              "Continue"
+                            )
                           }
                         </Clerk.Loading>
                       </Button>
@@ -142,7 +156,10 @@ export default function SignInPage() {
 
                     <p className="text-sm md:text-base text-center mt-4 md:mt-6 text-foreground">
                       New to Forem?{" "}
-                      <Clerk.Link navigate="sign-up" className="text-primary hover:underline">
+                      <Clerk.Link
+                        navigate="sign-up"
+                        className="text-primary hover:underline"
+                      >
                         Create account
                       </Clerk.Link>
                     </p>
@@ -150,13 +167,15 @@ export default function SignInPage() {
                 </SignIn.Step>
 
                 {/* Step 2: Verification Strategies */}
-                <SignIn.Step name="verifications">
+                <SignIn.Step name="verifications" className="w-full">
                   {/* Password Strategy */}
                   <SignIn.Strategy name="password">
                     <div className="w-full space-y-4 md:space-y-6 mt-6">
                       <Clerk.Field name="password" className="space-y-2">
                         <Clerk.Label asChild>
-                          <Label className="text-base md:text-sm text-foreground">Password</Label>
+                          <Label className="text-base md:text-sm text-foreground">
+                            Password
+                          </Label>
                         </Clerk.Label>
                         <PasswordInput id="password" validatePassword={true} />
                         <Clerk.FieldError className="block text-sm text-destructive" />
@@ -168,12 +187,21 @@ export default function SignInPage() {
                             id="remember-me"
                             checked={rememberMe}
                             onCheckedChange={() => setRememberMe(!rememberMe)}
-                            className="rounded-md"
+                            className="cursor-pointer"
                           />
-                          <Label className="text-foreground cursor-pointer">Remember me</Label>
+                          <Label
+                            htmlFor="remember-me"
+                            className="text-foreground cursor-pointer"
+                          >
+                            Remember me
+                          </Label>
                         </div>
                         <SignIn.Action navigate="forgot-password" asChild>
-                          <Button variant="link" size="sm" className="text-primary hover:underline">
+                          <Button
+                            variant="link"
+                            size="sm"
+                            className="text-primary hover:underline cursor-pointer"
+                          >
                             Forgot password?
                           </Button>
                         </SignIn.Action>
@@ -187,7 +215,11 @@ export default function SignInPage() {
                         >
                           <Clerk.Loading>
                             {(isLoading) =>
-                              isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Log in"
+                              isLoading ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                              ) : (
+                                "Log in"
+                              )
                             }
                           </Clerk.Loading>
                         </Button>
@@ -202,12 +234,15 @@ export default function SignInPage() {
                         <h2 className="text-xl md:text-2xl font-bold text-foreground text-center">
                           Check your email
                         </h2>
-                        <p className="text-sm md:text-base text-muted-foreground text-center">
-                          Enter the verification code sent to <SignIn.SafeIdentifier />
+                        <p className="text-sm md:text-base text-muted-foreground text-center w-full">
+                          Enter the verification code sent to{" "}
+                          <SignIn.SafeIdentifier />
                         </p>
                       </div>
                       <Clerk.Field name="code" className="space-y-2">
-                        <Clerk.Label className="sr-only">Verification Code</Clerk.Label>
+                        <Clerk.Label className="sr-only">
+                          Verification Code
+                        </Clerk.Label>
                         <Clerk.Input
                           type="otp"
                           autoSubmit
@@ -219,7 +254,8 @@ export default function SignInPage() {
                                 "relative flex size-10 md:size-12 items-center justify-center border border-input rounded-md text-sm transition-all",
                                 {
                                   "ring-2 ring-ring ring-offset-background":
-                                    status === "cursor" || status === "selected",
+                                    status === "cursor" ||
+                                    status === "selected",
                                 }
                               )}
                             >
@@ -242,7 +278,11 @@ export default function SignInPage() {
                         >
                           <Clerk.Loading scope="submit">
                             {(isLoading) =>
-                              isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Verify"
+                              isLoading ? (
+                                <Loader2 className="h-5 w-5 animate-spin" />
+                              ) : (
+                                "Verify"
+                              )
                             }
                           </Clerk.Loading>
                         </Button>
@@ -251,9 +291,17 @@ export default function SignInPage() {
                         resend
                         asChild
                         fallback={({ resendableAfter }) => (
-                          <Button variant="link" size="sm" disabled className="w-full text-center">
+                          <Button
+                            variant="link"
+                            size="sm"
+                            disabled
+                            className="w-full text-center"
+                          >
                             Didn’t receive a code? Resend (
-                            <span className="tabular-nums">{resendableAfter}</span>)
+                            <span className="tabular-nums">
+                              {resendableAfter}
+                            </span>
+                            )
                           </Button>
                         )}
                       >
@@ -282,7 +330,9 @@ export default function SignInPage() {
                     </div>
                     <Clerk.Field name="identifier" className="space-y-2">
                       <Clerk.Label asChild>
-                        <Label className="text-base md:text-sm text-foreground">Email</Label>
+                        <Label className="text-base md:text-sm text-foreground">
+                          Email
+                        </Label>
                       </Clerk.Label>
                       <Clerk.Input type="email" required asChild>
                         <Input
@@ -301,14 +351,22 @@ export default function SignInPage() {
                       >
                         <Clerk.Loading>
                           {(isLoading) =>
-                            isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Send Reset Code"
+                            isLoading ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                              "Send Reset Code"
+                            )
                           }
                         </Clerk.Loading>
                       </Button>
                     </SignIn.SupportedStrategy>
 
                     <SignIn.Action navigate="start" asChild>
-                      <Button variant="link" size="sm" className="w-full text-center text-muted-foreground">
+                      <Button
+                        variant="link"
+                        size="sm"
+                        className="w-full text-center text-muted-foreground"
+                      >
                         Back to sign in
                       </Button>
                     </SignIn.Action>
@@ -325,15 +383,22 @@ export default function SignInPage() {
                     </div>
                     <Clerk.Field name="password" className="space-y-2">
                       <Clerk.Label asChild>
-                        <Label className="text-base md:text-sm text-foreground">New Password</Label>
+                        <Label className="text-base md:text-sm text-foreground">
+                          New Password
+                        </Label>
                       </Clerk.Label>
-                      <PasswordInput id="new-password" validatePassword={true} />
+                      <PasswordInput
+                        id="new-password"
+                        validatePassword={true}
+                      />
                       <Clerk.FieldError className="block text-sm text-destructive" />
                     </Clerk.Field>
 
                     <Clerk.Field name="confirmPassword" className="space-y-2">
                       <Clerk.Label asChild>
-                        <Label className="text-base md:text-sm text-foreground">Confirm Password</Label>
+                        <Label className="text-base md:text-sm text-foreground">
+                          Confirm Password
+                        </Label>
                       </Clerk.Label>
                       <PasswordInput id="confirm-password" />
                       <Clerk.FieldError className="block text-sm text-destructive" />
@@ -347,7 +412,11 @@ export default function SignInPage() {
                       >
                         <Clerk.Loading>
                           {(isLoading) =>
-                            isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Update Password"
+                            isLoading ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                              "Update Password"
+                            )
                           }
                         </Clerk.Loading>
                       </Button>
