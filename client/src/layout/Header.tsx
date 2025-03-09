@@ -5,6 +5,7 @@ import Link from "next/link";
 // ** Components
 import AuthButtons from "@/components/auth/AuthButtons";
 import SearchBar from "@/components/SearchBar";
+import { ModeToggle } from "@/components/ModeToggle";
 
 // ** UI Components
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -35,6 +36,9 @@ const Header = () => {
           <div className="hidden md:flex flex-1">
             <SearchBar className="max-w-[420px]" />
           </div>
+
+          {/* Theme Toggle */}
+          <ModeToggle />
 
           {/* Auth buttons */}
           <AuthButtons />
