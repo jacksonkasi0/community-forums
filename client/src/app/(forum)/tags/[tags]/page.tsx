@@ -1,25 +1,19 @@
-import React from "react";
+import { type Metadata } from "next";
 
-interface TagPageProps {
-  params: {
-    tags: string;
-  };
+interface PageProps {
+  params: Promise<{ tags: string }>;
 }
 
-export default function TagPage({ params }: TagPageProps) {
-  const { tags } = params; // Get the tag from the params
+export default async function TagPage(props: PageProps) {
+  const params = await props.params;
+  const { tags } = params;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Posts tagged with #{tags}</h1>
-      {/* Placeholder for tag-specific content */}
       <div className="mt-4">
-        {/* Example: Fetch posts based on the tag */}
         <p className="text-gray-600">Showing posts tagged with #{tags}</p>
-
-        {/* Fetch posts and display based on the tag */}
         <div className="mt-4">
-          {/* Add your posts component or logic here */}
           <p>Here you would list posts related to the tag #{tags}</p>
         </div>
       </div>
@@ -27,11 +21,8 @@ export default function TagPage({ params }: TagPageProps) {
   );
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { tags: string };
-}) {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   return {
     title: `Posts tagged with #${params.tags}`,
     description: `Browse all posts tagged with #${params.tags}`,
