@@ -8,7 +8,7 @@ interface SocialLoginButtonProps {
   provider: string;
   onClick?: () => void;
   disabled?: boolean;
-  children?: React.ReactNode; // Added to support loading state or other content
+  children?: React.ReactNode;
 }
 
 export const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
@@ -21,21 +21,24 @@ export const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
   return (
     <Button
       variant="outline"
-      className={cn(
-        "w-full mt-3 py-3 flex items-center justify-between gap-5",
-        "bg-card text-card-foreground border-border",
-        "hover:bg-muted hover:text-muted-foreground",
-        "transition-colors duration-200",
-        "cursor-pointer",
-        disabled && "opacity-50 cursor-not-allowed!"
-      )}
+      size="lg"
+      type="button"
       onClick={onClick}
       disabled={disabled}
-      type="button"
-      size='lg'
+      className={cn(
+        "w-full mt-3 py-3 flex items-center justify-between gap-5 transition-colors duration-200 cursor-pointer",
+        "bg-card text-card-foreground border-border",
+        "hover:bg-muted hover:text-muted-foreground",
+        disabled && "opacity-50 cursor-not-allowed!"
+      )}
     >
       <IconComponent className="size-6" />
-      <span className="flex-grow text-center">Continue with {provider}</span>
+      {/* Full text on larger screens */}
+      <span className="hidden sm:block flex-grow text-center">
+        Continue with {provider}
+      </span>
+      {/* On mobile, show only a short version (or provider name) */}
+      <span className="block sm:hidden text-center">{provider}</span>
       {children && <span className="flex-shrink-0">{children}</span>}
     </Button>
   );
