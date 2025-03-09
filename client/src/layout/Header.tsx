@@ -17,7 +17,7 @@ const Header = () => {
     <header className="w-full border-b border-border bg-background">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-14 flex items-center space-x-4">
-          <SidebarTrigger className="p-4 md:hidden text-primary" />
+          <SidebarTrigger className="p-4 md:hidden text-primary cursor-pointer" />
           {/* Logo */}
           <div className="flex items-center mr-4">
             <Link href="/">
