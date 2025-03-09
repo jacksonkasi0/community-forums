@@ -1,7 +1,10 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+// ** Icons
 import {
   Home,
   Search,
@@ -11,6 +14,8 @@ import {
   Linkedin,
   Twitch,
 } from "lucide-react";
+
+// ** UI Components
 import {
   Sidebar,
   SidebarContent,
@@ -24,9 +29,13 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+
+// ** Assets & Utilities
 import LogoImg from "@/assets/images/logo.png";
 import { cn } from "@/lib/utils";
-import { useLayoutStore } from "./store";
+
+// ** Store
+import { useLayoutStore } from "@/store/layout";
 
 // Define navigation items and chips as arrays for better maintainability
 const primaryNavItems = [

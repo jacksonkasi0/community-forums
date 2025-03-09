@@ -1,14 +1,19 @@
 "use client";
+
 import React from "react";
+
+// ** UI Components
 import {
+  Sidebar,
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar";
-import { Sidebar } from "@/components/ui/sidebar";
 import Header from "./Header";
 import MobileSidebar from "./MobileSidebar";
 import SearchBar from "@/components/SearchBar";
-import { useLayoutStore } from "./store";
+
+// ** Store
+import { useLayoutStore } from "@/store/layout";
 
 interface LayoutProps {
   children: React.ReactNode;
