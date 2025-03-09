@@ -1,5 +1,8 @@
 import { type Metadata } from "next";
 
+// ** Third-party Lib
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
+
 // ** Clerk Authentication
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -71,10 +74,12 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <NuqsAdapter>
           <header className="flex justify-end items-center p-4 gap-4 h-16">
             <Header />
           </header>
           {children}
+          </NuqsAdapter>
         </body>
       </html>
     </ClerkProvider>
