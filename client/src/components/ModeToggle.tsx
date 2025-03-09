@@ -1,9 +1,17 @@
 "use client";
 
 import React from "react";
-import { Moon, Sun } from "lucide-react";
+
+// ** Hooks
 import { useTheme } from "next-themes";
+
+// ** UI Components
 import { Button } from "@/components/ui/button";
+
+// ** Icons
+import { Moon, Sun } from "lucide-react";
+
+// ** Utilities
 import { cn } from "@/lib/utils";
 
 export function ModeToggle() {
@@ -23,22 +31,17 @@ export function ModeToggle() {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className={cn(
-        "cursor-pointer relative",
-        "focus:ring-2 focus:ring-ring focus:ring-offset-2"
-      )}
+      className={cn("cursor-pointer relative")}
     >
       <Sun
-        className={cn(
-          "h-[1.2rem] w-[1.2rem] transition-all",
-          theme === "light" ? "rotate-0 scale-100" : "-rotate-90 scale-0"
-        )}
+        className={cn("h-[1.2rem] w-[1.2rem]", {
+          hidden: theme !== "light",
+        })}
       />
       <Moon
-        className={cn(
-          "absolute h-[1.2rem] w-[1.2rem] transition-all",
-          theme === "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0"
-        )}
+        className={cn("absolute h-[1.2rem] w-[1.2rem]", {
+          hidden: theme !== "dark",
+        })}
       />
       <span className="sr-only">Toggle theme</span>
     </Button>
