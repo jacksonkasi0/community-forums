@@ -27,8 +27,11 @@ export default function TagPage({ params }: TagPageProps) {
   );
 }
 
-// Optionally add metadata dynamically based on tag
-export async function generateMetadata({ params }: TagPageProps) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { tags: string };
+}) {
   return {
     title: `Posts tagged with #${params.tags}`,
     description: `Browse all posts tagged with #${params.tags}`,
