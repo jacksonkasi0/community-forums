@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 
 // ** UI Components
 import {
@@ -8,7 +8,6 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
 
 // ** Custom Components
 import Header from "./Header";
@@ -38,7 +37,9 @@ const Layout = ({ children }: LayoutProps) => {
           {/* Mobile search bar below header */}
           {isMobileSearchVisible && (
             <div className="md:hidden bg-background border-b border-border px-4 sm:px-6 lg:px-8 pb-4">
+              <Suspense>
               <SearchBar />
+              </Suspense>
             </div>
           )}
         </div>

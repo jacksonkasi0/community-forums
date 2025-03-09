@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,7 +34,9 @@ const Header = () => {
 
           {/* Desktop search area */}
           <div className="hidden md:flex flex-1">
+          <Suspense>
             <SearchBar className="max-w-[420px]" />
+            </Suspense>
           </div>
 
           {/* Theme Toggle */}
