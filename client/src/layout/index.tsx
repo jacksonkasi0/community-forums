@@ -45,7 +45,7 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
         {/* Main content wrapped in a 12-column grid */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[1280px] mx-auto">
+          <div className="max-w-7xl mx-auto">
             <main>{children}</main>
           </div>
         </div>
