@@ -24,7 +24,7 @@ const AuthButtons: React.FC = () => {
         <SignInButton mode="redirect">
           <Button
             variant="ghost"
-            className="text-foreground hover:bg-muted hidden md:block"
+            className="text-foreground hover:bg-muted hidden md:block cursor-pointer"
           >
             Log in
           </Button>
@@ -32,7 +32,7 @@ const AuthButtons: React.FC = () => {
         <SignUpButton mode="redirect">
           <Button
             variant="default"
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
           >
             Create account
           </Button>

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 // Clerk Authentication
 import * as Clerk from "@clerk/elements/common";
@@ -37,11 +38,13 @@ export default function SignUpPage() {
           {(isGlobalLoading) => (
             <div className="flex w-full max-w-md flex-col items-center">
               {/* Logo Section */}
-              <img
-                src={LogoImg.src}
-                alt="Forem Logo"
-                className="w-28 max-md:w-24 max-w-full h-auto self-center mb-6"
-              />
+              <Link href="/" className="cursor-pointer">
+                <img
+                  src={LogoImg.src}
+                  alt="Forem Logo"
+                  className="w-28 max-md:w-24 max-w-full h-auto self-center mb-6"
+                />
+              </Link>
 
               <h1 className="text-2xl md:text-3xl font-bold leading-tight text-center text-foreground">
                 Join the Forem Community
@@ -112,7 +115,7 @@ export default function SignUpPage() {
 
                   <SignUp.Action submit asChild>
                     <Button
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                       disabled={isGlobalLoading}
                       size="lg"
                     >
@@ -129,15 +132,15 @@ export default function SignUpPage() {
                 <div className="w-full mt-6">
                   <p className="text-xs md:text-sm leading-snug text-center text-muted-foreground">
                     By creating an account, you agree to our{" "}
-                    <a href="#" className="text-primary hover:underline">
+                    <a href="#" className="text-primary hover:underline cursor-pointer">
                       terms of service
                     </a>
                     ,{" "}
-                    <a href="#" className="text-primary hover:underline">
+                    <a href="#" className="text-primary hover:underline cursor-pointer">
                       privacy policy
                     </a>
                     , and{" "}
-                    <a href="#" className="text-primary hover:underline">
+                    <a href="#" className="text-primary hover:underline cursor-pointer">
                       community guidelines
                     </a>
                     .
@@ -147,7 +150,7 @@ export default function SignUpPage() {
 
                   <p className="text-sm md:text-base text-center mt-4 md:mt-6 text-foreground">
                     Already have an account?{" "}
-                    <Clerk.Link navigate="sign-in" className="text-primary hover:underline">
+                    <Clerk.Link navigate="sign-in" className="text-primary hover:underline cursor-pointer">
                       Sign in
                     </Clerk.Link>
                   </p>
@@ -172,7 +175,7 @@ export default function SignUpPage() {
 
                   <SignUp.Action submit asChild>
                     <Button
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                       disabled={isGlobalLoading}
                       size="lg"
                     >
@@ -236,7 +239,7 @@ export default function SignUpPage() {
 
                     <SignUp.Action submit asChild>
                       <Button
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer "
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                         disabled={isGlobalLoading}
                         size="lg"
                       >
@@ -257,7 +260,7 @@ export default function SignUpPage() {
                       asChild
                       fallback={({ resendableAfter }) => (
                         <Button variant="link" size="sm" disabled className="w-full text-center">
-                          Didn’t receive a code? Resend (
+                          Didn't receive a code? Resend (
                           <span className="tabular-nums">{resendableAfter}</span>)
                         </Button>
                       )}
@@ -267,7 +270,7 @@ export default function SignUpPage() {
                         size="sm"
                         className="w-full text-center text-muted-foreground cursor-pointer"
                       >
-                        Didn’t receive a code? Resend
+                        Didn't receive a code? Resend
                       </Button>
                     </SignUp.Action>
                   </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 // Icons
 import { Loader2 } from "lucide-react";
@@ -41,11 +42,13 @@ export default function SignInPage() {
             {(isGlobalLoading) => (
               <div className="flex w-full flex-col items-center">
                 {/* Logo Section */}
-                <img
-                  src={LogoImg.src}
-                  alt="Forem Logo"
-                  className="w-28 max-md:w-24 max-w-full h-auto self-center mb-6"
-                />
+                <Link href="/" className="cursor-pointer">
+                  <img
+                    src={LogoImg.src}
+                    alt="Forem Logo"
+                    className="w-28 max-md:w-24 max-w-full h-auto self-center mb-6"
+                  />
+                </Link>
 
                 <h1 className="text-2xl md:text-3xl font-bold leading-tight text-center text-foreground">
                   Join the Forem
@@ -117,7 +120,7 @@ export default function SignInPage() {
                     <SignIn.Action submit asChild>
                       <Button
                         type="submit"
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                         disabled={isGlobalLoading}
                         size="lg"
                       >
@@ -138,15 +141,15 @@ export default function SignInPage() {
                   <div className="w-full mt-6">
                     <p className="text-xs md:text-sm leading-snug text-center text-muted-foreground">
                       By signing in, you are agreeing to our{" "}
-                      <a href="#" className="text-primary hover:underline">
+                      <a href="#" className="text-primary hover:underline cursor-pointer">
                         privacy policy
                       </a>
                       ,{" "}
-                      <a href="#" className="text-primary hover:underline">
+                      <a href="#" className="text-primary hover:underline cursor-pointer">
                         terms of use
                       </a>
                       , and{" "}
-                      <a href="#" className="text-primary hover:underline">
+                      <a href="#" className="text-primary hover:underline cursor-pointer">
                         code of conduct
                       </a>
                       .
@@ -158,7 +161,7 @@ export default function SignInPage() {
                       New to Forem?{" "}
                       <Clerk.Link
                         navigate="sign-up"
-                        className="text-primary hover:underline"
+                        className="text-primary hover:underline cursor-pointer"
                       >
                         Create account
                       </Clerk.Link>
@@ -209,7 +212,7 @@ export default function SignInPage() {
 
                       <SignIn.Action submit asChild>
                         <Button
-                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                           disabled={isGlobalLoading}
                           size="lg"
                         >
@@ -272,7 +275,7 @@ export default function SignInPage() {
                       </Clerk.Field>
                       <SignIn.Action submit asChild>
                         <Button
-                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                           disabled={isGlobalLoading}
                           size="lg"
                         >
@@ -295,9 +298,9 @@ export default function SignInPage() {
                             variant="link"
                             size="sm"
                             disabled
-                            className="w-full text-center"
+                            className="w-full text-center cursor-pointer"
                           >
-                            Didn’t receive a code? Resend (
+                            Didn't receive a code? Resend (
                             <span className="tabular-nums">
                               {resendableAfter}
                             </span>
@@ -308,9 +311,9 @@ export default function SignInPage() {
                         <Button
                           variant="link"
                           size="sm"
-                          className="w-full text-center text-muted-foreground"
+                          className="w-full text-center text-muted-foreground cursor-pointer"
                         >
-                          Didn’t receive a code? Resend
+                          Didn't receive a code? Resend
                         </Button>
                       </SignIn.Action>
                     </div>
@@ -345,7 +348,7 @@ export default function SignInPage() {
 
                     <SignIn.SupportedStrategy name="reset_password_email_code">
                       <Button
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                         disabled={isGlobalLoading}
                         size="lg"
                       >
@@ -365,7 +368,7 @@ export default function SignInPage() {
                       <Button
                         variant="link"
                         size="sm"
-                        className="w-full text-center text-muted-foreground"
+                        className="w-full text-center text-muted-foreground cursor-pointer"
                       >
                         Back to sign in
                       </Button>
@@ -406,7 +409,7 @@ export default function SignInPage() {
 
                     <SignIn.Action submit asChild>
                       <Button
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer"
                         disabled={isGlobalLoading}
                         size="lg"
                       >
