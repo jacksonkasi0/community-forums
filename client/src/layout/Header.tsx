@@ -15,8 +15,8 @@ import LogoImg from "@/assets/images/logo.png";
 
 const Header = () => {
   return (
-    <header className="w-full border-b border-border bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="w-full border-b border-border px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="h-14 flex items-center space-x-2">
           <SidebarTrigger className="p-4 md:hidden text-primary" />
           {/* Logo */}
