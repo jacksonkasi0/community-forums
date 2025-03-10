@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // ** Hooks
 import { useTheme } from "next-themes";
@@ -16,6 +16,11 @@ import { cn } from "@/lib/utils";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Cycle through themes: light → dark → light
   const toggleTheme = () => {
@@ -25,6 +30,10 @@ export function ModeToggle() {
       setTheme("light");
     }
   };
+
+  if (!mounted) {
+    return null; // Avoid rendering until mounted
+  }
 
   return (
     <Button
