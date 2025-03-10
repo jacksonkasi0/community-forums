@@ -59,7 +59,7 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto h-full">
         <div className="flex items-center justify-between h-full space-x-2">
-          <SidebarTrigger className="p-4 md:hidden text-primary" />
+          <SidebarTrigger className="md:hidden p-4"  />
 
           {/* Logo */}
           <div className="flex items-center mr-4">
