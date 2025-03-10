@@ -52,12 +52,12 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "w-full fixed top-0 left-0 right-0 bg-background border-b border-border h-16",
-        "transition-transform duration-100 ease-out will-change-transform z-[100]"
+        "w-full fixed px-4 sm:px-6 lg:px-8  top-0 left-0 right-0 bg-background border-b border-border h-16",
+        "transition-transform duration-100 ease-out will-change-transform z-40"
       )}
       style={{ transform: `translateY(-${headerOffset}px)` }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div className="max-w-7xl mx-auto h-full">
         <div className="flex items-center justify-between h-full space-x-2">
           <SidebarTrigger className="p-4 md:hidden text-primary" />
 
