@@ -16,7 +16,7 @@ const AsidePrimarySidebar: React.FC = () => {
   return (
     <aside
       className={cn(
-        "flex h-max p-4 w-full bg-sidebar flex-col space-y-6 overflow-y-auto border-r text-sidebar-foreground scrollbar-hide"
+        "flex h-max p-4 w-full bg-sidebar flex-col space-y-6 overflow-y-auto border-r text-sidebar-foreground scrollbar-hide py-6"
       )}
     >
       <SignedOut>
