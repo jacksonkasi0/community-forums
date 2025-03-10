@@ -32,21 +32,25 @@ const Layout = ({ children }: LayoutProps) => {
       <Sidebar variant="sidebar" />
       <MobileSidebar />
       <SidebarInset>
-        <div className="space-y-6">
-          <Header />
+        {/* Header section */}
+        <Header />
+        
+        {/* Content wrapper with padding for header */}
+        <div className="pt-16"> {/* Fixed padding for constant header height */}
           {/* Mobile search bar below header */}
           {isMobileSearchVisible && (
             <div className="md:hidden bg-background border-b border-border px-4 sm:px-6 lg:px-8 pb-4">
               <Suspense>
-              <SearchBar />
+                <SearchBar />
               </Suspense>
             </div>
           )}
-        </div>
-        {/* Main content wrapped in a 12-column grid */}
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <main>{children}</main>
+
+          {/* Main content */}
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <main className="min-h-screen">{children}</main>
+            </div>
           </div>
         </div>
       </SidebarInset>
