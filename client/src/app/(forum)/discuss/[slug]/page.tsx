@@ -3,7 +3,7 @@ import { Metadata } from "next";
 // ** UI Components
 import { Card } from "@/components/ui/card";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
   return (
@@ -20,7 +20,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   );
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   return {
     title: `#${params.slug}`,
     description: `Posts tagged with #${params.slug}`,
