@@ -1,5 +1,8 @@
+// ** React/Next
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
+
+// ** Components
 import { Card } from "@/components/ui/card";
 
 interface PageProps {
