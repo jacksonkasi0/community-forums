@@ -20,7 +20,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-foreground mb-6">
           Featured Articles
         </h2>
-        <div className="mt-12">
+        <div className="mt-4">
           <ArticlesSection />
         </div>
       </main>
