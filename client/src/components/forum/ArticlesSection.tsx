@@ -1,14 +1,20 @@
 'use client'
 
-// ** Custom Components
+// ** React
 import { useEffect, useState } from "react";
+
+// ** Third-party Libraries
+import { useQueryState } from "nuqs";
+
+// ** API
 import { DevToArticle, fetchDevToArticles } from "@/api/dev/devto";
-import { searchArticles } from "@/lib/utils/fuzzySearch";
+
+// ** Components
 import { ArticleCard } from "./ArticleCard";
 import FeedSkeleton from "../feed/FeedSkeleton";
 
-// ** Query State Management
-import { useQueryState } from "nuqs";
+// ** Utils
+import { searchArticles } from "@/lib/utils/fuzzySearch";
 
 export function ArticlesSection() {
   const [articles, setArticles] = useState<DevToArticle[]>([]);
@@ -27,7 +33,6 @@ export function ArticlesSection() {
         setIsLoading(true);
         setError(null);
         const data = await fetchDevToArticles();
-        console.log("Fetched articles:", data);
         if (data && data.length > 0) {
           setArticles(data);
           setFilteredArticles(data);
@@ -35,7 +40,6 @@ export function ArticlesSection() {
           setError("No articles found");
         }
       } catch (error) {
-        console.error("Failed to load articles:", error);
         setError("Failed to load articles");
       } finally {
         setIsLoading(false);

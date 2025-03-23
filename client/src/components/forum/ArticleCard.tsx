@@ -1,9 +1,16 @@
-import { DevToArticle } from "@/api/dev/devto";
+// ** React
 import Image from "next/image";
 import Link from "next/link";
+
+// ** Third-party Libraries
+import { formatDistanceToNow } from "date-fns";
+
+// ** API
+import type { DevToArticle } from "@/api/dev/devto";
+
+// ** Components
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { formatDistanceToNow } from "date-fns";
 
 interface ArticleCardProps {
   article: DevToArticle;
@@ -26,8 +33,6 @@ function getDirectImageUrl(cdnUrl: string): string {
 export function ArticleCard({ article }: ArticleCardProps) {
   const socialImageUrl = getDirectImageUrl(article.social_image);
   const profileImageUrl = getDirectImageUrl(article.user.profile_image_90);
-
-  console.log(article);
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -59,7 +64,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {article.tag_list.map((tag) => (
+            {article.tag_list.map((tag: string) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
