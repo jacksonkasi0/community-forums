@@ -1,30 +1,41 @@
 import { type Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Card } from "@/components/ui/card";
 
 interface PageProps {
-params: Promise<{ slug: string }>;
+  params: {
+    slug: string;
+  };
 }
 
-export default async function DiscussPage(props: PageProps) {
-  const params = await props.params;
+export default async function DiscussPage({ params }: PageProps) {
   const { slug } = params;
+
+  if (!slug) {
+    notFound();
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Posts tagged with #{slug}</h1>
-      <div className="mt-4">
-        <p className="text-gray-600">Showing posts tagged with #{slug}</p>
-        <div className="mt-4">
-          <p>Here you would list posts related to the tag #{slug}</p>
+      <Card className="p-6">
+        <h1 className="text-2xl font-semibold mb-4">
+          Posts tagged with #{decodeURIComponent(slug)}
+        </h1>
+        <div className="text-muted-foreground">
+          <p>Showing posts tagged with #{decodeURIComponent(slug)}</p>
+          <div className="mt-6">
+            <p>Here you would list posts related to the tag #{decodeURIComponent(slug)}</p>
+          </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = params;
   return {
-    title: `Posts tagged with #${params.slug}`,
-    description: `Browse all posts tagged with #${params.slug}`,
+    title: `Posts tagged with #${decodeURIComponent(slug)}`,
+    description: `Browse all posts tagged with #${decodeURIComponent(slug)}`,
   };
 }

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { type Metadata } from "next";
 
 // ** UI Components
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 // ** Types & Data
-import { type Challenge } from "@/app/challenges/data";
+import { type Challenge, type RuleSection, type ChallengeBadge, type FaqItem, type ActionButton } from "@/app/challenges/data";
 import { challenges } from "@/app/challenges/data";
 
 // ** Types
@@ -33,101 +34,123 @@ async function getChallenge(slug: string): Promise<Challenge | null> {
 
 // ** Component
 export default async function ChallengePage({ params }: PageProps) {
-  const challenge = await getChallenge(params.slug);
-  
-  if (!challenge) {
+  const { slug } = params;
+
+  // If no slug is provided, return 404
+  if (!slug) {
     notFound();
   }
 
-  return (
-    <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6">
-      {/* Challenge Header */}
-      <div className={`relative w-full aspect-[3/1] rounded-lg overflow-hidden mb-8 bg-gradient-to-br ${challenge.header.backgroundGradient}`}>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-          <Badge variant="outline" className="mb-4 text-xs uppercase tracking-wider">
-            {challenge.header.badge}
-          </Badge>
-          <h1 className="text-4xl font-bold mb-2">{challenge.header.title}</h1>
-          <Badge variant="secondary" className="text-xs">
-            {challenge.header.period}
-          </Badge>
-        </div>
-      </div>
+  // Get challenge data from our challenges data folder
+  try {
+    const challenge = await import(`../data/${slug}`).then(
+      (mod) => mod[`${slug}Challenge`]
+    );
 
-      {/* Challenge Content */}
-      <div className="space-y-8">
-        {/* Main Content */}
-        <Card className="p-6 bg-card">
-          <div className="prose dark:prose-invert max-w-none">
-            <h2 className="text-2xl font-bold mb-4">{challenge.header.badge}</h2>
-            <p className="text-muted-foreground mb-4">
-              {challenge.description}
-            </p>
+    if (!challenge) {
+      notFound();
+    }
 
-            {/* Rules Sections */}
-            {challenge.ruleSections.map((section, index) => (
-              <div key={section.title}>
-                <h3 className="text-xl font-semibold mb-3">{section.title}</h3>
-                <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                  {section.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                {index < challenge.ruleSections.length - 1 && <Separator className="my-6" />}
-              </div>
-            ))}
-
-            <Separator className="my-6" />
-
-            {/* Badges Section */}
-            <h3 className="text-xl font-semibold mb-3">Badges & Prizes</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
-              {challenge.badges.map((badge) => (
-                <div key={badge.title} className="flex flex-col items-center p-4 rounded-lg bg-muted/50">
-                  <Image
-                    src={badge.image}
-                    alt={badge.alt}
-                    width={80}
-                    height={80}
-                    className="mb-2"
-                  />
-                  <span className="text-sm font-medium">{badge.title}</span>
-                </div>
-              ))}
-            </div>
-
-            <Separator className="my-6" />
-
-            {/* FAQ Section */}
-            <h3 className="text-xl font-semibold mb-3">FAQ</h3>
-            <div className="space-y-4">
-              {challenge.faq.map((item) => (
-                <div key={item.question}>
-                  <h4 className="font-medium mb-2">{item.question}</h4>
-                  <p className="text-muted-foreground">{item.answer}</p>
-                </div>
-              ))}
-            </div>
+    return (
+      <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6">
+        {/* Challenge Header */}
+        <div className={`relative w-full aspect-[3/1] rounded-lg overflow-hidden mb-8 bg-gradient-to-br ${challenge.header.backgroundGradient}`}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+            <Badge variant="outline" className="mb-4 text-xs uppercase tracking-wider">
+              {challenge.header.badge}
+            </Badge>
+            <h1 className="text-4xl font-bold mb-2">{challenge.header.title}</h1>
+            <Badge variant="secondary" className="text-xs">
+              {challenge.header.period}
+            </Badge>
           </div>
-        </Card>
+        </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          {challenge.actions.map((button) => (
-            <Link
-              key={button.label}
-              href={button.href}
-              className={`flex-1 inline-flex justify-center items-center px-6 py-3 rounded-lg transition-colors
-                ${button.variant === 'primary' 
-                  ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/90'
-                }`}
-            >
-              {button.label}
-            </Link>
-          ))}
+        {/* Challenge Content */}
+        <div className="space-y-8">
+          {/* Main Content */}
+          <Card className="p-6 bg-card">
+            <div className="prose dark:prose-invert max-w-none">
+              <h2 className="text-2xl font-bold mb-4">{challenge.header.badge}</h2>
+              <p className="text-muted-foreground mb-4">
+                {challenge.description}
+              </p>
+
+              {/* Rules Sections */}
+              {challenge.ruleSections.map((section: RuleSection, index: number) => (
+                <div key={section.title}>
+                  <h3 className="text-xl font-semibold mb-3">{section.title}</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                    {section.items.map((item: string) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  {index < challenge.ruleSections.length - 1 && <Separator className="my-6" />}
+                </div>
+              ))}
+
+              <Separator className="my-6" />
+
+              {/* Badges Section */}
+              <h3 className="text-xl font-semibold mb-3">Badges & Prizes</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
+                {challenge.badges.map((badge: ChallengeBadge) => (
+                  <div key={badge.title} className="flex flex-col items-center p-4 rounded-lg bg-muted/50">
+                    <Image
+                      src={badge.image}
+                      alt={badge.alt}
+                      width={80}
+                      height={80}
+                      className="mb-2"
+                    />
+                    <span className="text-sm font-medium">{badge.title}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Separator className="my-6" />
+
+              {/* FAQ Section */}
+              <h3 className="text-xl font-semibold mb-3">FAQ</h3>
+              <div className="space-y-4">
+                {challenge.faq.map((item: FaqItem) => (
+                  <div key={item.question}>
+                    <h4 className="font-medium mb-2">{item.question}</h4>
+                    <p className="text-muted-foreground">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                {challenge.actions.map((button: ActionButton) => (
+                  <Link
+                    key={button.label}
+                    href={button.href}
+                    className={`flex-1 inline-flex justify-center items-center px-6 py-3 rounded-lg transition-colors
+                      ${button.variant === 'primary' 
+                        ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/90'
+                      }`}
+                  >
+                    {button.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    notFound();
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = params;
+  return {
+    title: `${slug.charAt(0).toUpperCase() + slug.slice(1)} Challenge`,
+    description: `Details about the ${slug} challenge`,
+  };
 } 
