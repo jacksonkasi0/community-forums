@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,6 +37,9 @@ import { cn } from "@/lib/utils";
 // ** Store
 import { useLayoutStore } from "@/store/layout";
 
+// ** Hooks
+import { useMediaQuery } from "@/hooks/use-media-query";
+
 // Define navigation items and chips as arrays for better maintainability
 const primaryNavItems = [
   { title: "Search...", icon: Search, action: "search" },
@@ -72,9 +75,17 @@ const socialMediaLinks = [
 export default function MobileSidebar(
   props: React.ComponentProps<typeof Sidebar>
 ) {
-  const { toggleMobileSidebar, toggleMobileSearchVisibility } =
+  const { toggleMobileSidebar, toggleMobileSearchVisibility, closeMobileSidebar } =
     useLayoutStore();
   const currentYear = new Date().getFullYear();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  // Close mobile sidebar when switching to desktop view
+  useEffect(() => {
+    if (isDesktop) {
+      closeMobileSidebar();
+    }
+  }, [isDesktop, closeMobileSidebar]);
 
   const handleSearchClick = () => {
     toggleMobileSidebar();

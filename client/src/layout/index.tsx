@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 
 // ** UI Components
 import {
@@ -16,13 +16,30 @@ import SearchBar from "@/components/SearchBar";
 
 // ** Store
 import { useLayoutStore } from "@/store/layout";
+
+// ** Hooks
+import { useMediaQuery } from "@/hooks/use-media-query";
+
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { isMobileSidebarOpen, toggleMobileSidebar, isMobileSearchVisible } =
-    useLayoutStore();
+  const { 
+    isMobileSidebarOpen, 
+    toggleMobileSidebar, 
+    closeMobileSidebar,
+    isMobileSearchVisible 
+  } = useLayoutStore();
+  
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  // Close mobile sidebar when navigating or switching to desktop
+  useEffect(() => {
+    if (isDesktop) {
+      closeMobileSidebar();
+    }
+  }, [isDesktop, closeMobileSidebar]);
 
   return (
     <SidebarProvider
