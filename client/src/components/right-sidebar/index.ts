@@ -1,3 +1,3 @@
-export { ActiveDiscussions } from './ActiveDiscussions';
+export { DiscussionThreads as ActiveDiscussions } from './DiscussionThreads';
 export { Challenges } from './Challenges';
-export { DiscussionThreads } from './DiscussionThreads'; 
+export { DiscussionCategories } from './DiscussionCategories'; 

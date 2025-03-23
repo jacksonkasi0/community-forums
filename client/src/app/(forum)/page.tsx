@@ -4,7 +4,7 @@ import { ArticlesSection } from "@/components/forum/ArticlesSection";
 import { 
   ActiveDiscussions, 
   Challenges, 
-  DiscussionThreads 
+  DiscussionCategories 
 } from "@/components/right-sidebar";
 
 export default function Home() {
@@ -26,10 +26,12 @@ export default function Home() {
       </main>
 
       {/* Right Sidebar: hidden on screens smaller than lg; 3 columns on lg */}
-      <aside className="hidden lg:block lg:col-span-3 py-6 space-y-6">
-        <ActiveDiscussions />
-        <Challenges />
-        <DiscussionThreads />
+      <aside className="hidden lg:block lg:col-span-3 py-6">
+        <div className="space-y-6">
+          <ActiveDiscussions />
+          <Challenges />
+          <DiscussionCategories />
+        </div>
       </aside>
     </div>
   );

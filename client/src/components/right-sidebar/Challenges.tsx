@@ -25,7 +25,7 @@ const challenges: Challenge[] = [
   {
     title: "WeCoded Challenge",
     description: "Build a landing page or share your story!",
-    image: "https://media2.dev.to/dynamic/image/width=880%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fi7uzu7m51rl9yhs2yryr.png",
+    image: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/whxcx5o3zjljax235mv8.png",
     period: "MARCH 5 - APRIL 6",
     href: "/challenges/wecoded",
     emoji: "💜"
@@ -41,33 +41,32 @@ const challenges: Challenge[] = [
 
 export function Challenges() {
   return (
-    <Card className="p-4 bg-card">
-      <div className="flex items-center gap-2 mb-6">
-        <span className="text-xl">👋</span>
-        <h2 className="text-xl font-bold">What's happening this week</h2>
+    <Card className="p-4 bg-sidebar">
+      <div className="flex items-center gap-2 mb-4">
+        <h2 className="text-[15px] font-bold text-sidebar-foreground">What's happening this week</h2>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div>
-          <h3 className="text-xl mb-4 flex items-center gap-2">
-            Challenges <span className="text-2xl">🎮</span>
+          <h3 className="text-[15px] mb-3 flex items-center gap-2 text-sidebar-foreground">
+            Challenges <span className="text-base">🎮</span>
           </h3>
 
-          <div className="space-y-6">
+          <div className="space-y-4 divide-y divide-sidebar-border">
             {challenges.map((challenge, index) => (
-              <div key={index} className="space-y-2">
+              <div key={index} className="space-y-2 pt-4 first:pt-0">
                 {index === 0 && (
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xl">🚀</span>
-                    <span className="font-semibold">Just Launched</span>
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <span className="text-base">🚀</span>
+                    <span className="text-[13px] font-medium text-sidebar-foreground">Just Launched</span>
                   </div>
                 )}
                 <Link 
                   href={challenge.href}
                   className="group block"
                 >
-                  <div className="space-y-3">
-                    <div className="relative w-full aspect-[2/1] rounded-lg overflow-hidden bg-black/5">
+                  <div className="space-y-2">
+                    <div className="relative w-full aspect-[2/1] rounded-lg overflow-hidden bg-sidebar-muted">
                       <Image
                         src={challenge.image}
                         alt={challenge.title}
@@ -76,18 +75,18 @@ export function Challenges() {
                       />
                     </div>
                     <div>
-                      <div className="flex items-start gap-2">
-                        <h4 className="font-semibold text-lg group-hover:text-blue-500 transition-colors">
+                      <div className="flex items-start gap-1.5">
+                        <h4 className="text-[15px] leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
                           {challenge.title}
                         </h4>
                         {challenge.emoji && (
-                          <span className="text-xl shrink-0">{challenge.emoji}</span>
+                          <span className="text-base shrink-0 leading-tight">{challenge.emoji}</span>
                         )}
                       </div>
-                      <p className="text-muted-foreground mt-1 text-sm">
+                      <p className="text-[13px] text-sidebar-muted mt-1">
                         {challenge.description}
                       </p>
-                      <p className="text-xs text-muted-foreground mt-2 font-medium">
+                      <p className="text-[13px] text-sidebar-muted mt-1.5 font-medium">
                         {challenge.period}
                       </p>
                     </div>
@@ -99,8 +98,8 @@ export function Challenges() {
         </div>
 
         <div className="pt-2">
-          <p className="text-xl flex items-center gap-2">
-            Have a great week <span className="text-xl">❤️</span>
+          <p className="text-[15px] flex items-center gap-2 text-sidebar-foreground">
+            Have a great week <span className="text-base">❤️</span>
           </p>
         </div>
       </div>
