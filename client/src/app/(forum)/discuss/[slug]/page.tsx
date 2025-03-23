@@ -6,13 +6,14 @@ import { notFound } from "next/navigation";
 import { Card } from "@/components/ui/card";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function DiscussPage({ params, searchParams }: PageProps) {
+export default async function DiscussPage(props: PageProps) {
+  const params = await props.params;
   const { slug } = params;
 
   if (!slug) {
@@ -36,7 +37,8 @@ export default async function DiscussPage({ params, searchParams }: PageProps) {
   );
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const { slug } = params;
   return {
     title: `Posts tagged with #${decodeURIComponent(slug)}`,
