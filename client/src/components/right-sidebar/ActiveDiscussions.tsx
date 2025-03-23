@@ -1,6 +1,12 @@
+// ** React & Next
+import { JSX } from "react/jsx-runtime";
 import Link from "next/link";
+
+// ** Third-party Libraries
+import { CheckCircle, Building2, Lightbulb } from "lucide-react";
+
+// ** Components
 import { Card } from "@/components/ui/card";
-import { Flame, CheckCircle, Building2, Lightbulb } from "lucide-react";
 
 interface DiscussionItem {
   title: string;

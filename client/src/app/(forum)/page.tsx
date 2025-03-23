@@ -1,4 +1,4 @@
-// ** Custom Components
+// ** Components
 import AsidePrimarySidebar from "@/components/custom-sidebar";
 import { ArticlesSection } from "@/components/forum/ArticlesSection";
 import { 

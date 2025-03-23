@@ -1,5 +1,8 @@
+// ** React & Next
 import { type ReactNode } from 'react';
 import Link from "next/link";
+
+// ** Components
 import { Card } from "@/components/ui/card";
 
 interface DiscussionThread {
@@ -87,4 +90,4 @@ export function DiscussionCategories(): ReactNode {
       </Card>
     </div>
   );
-} 
+}

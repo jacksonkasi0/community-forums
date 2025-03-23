@@ -1,6 +1,9 @@
+// ** React & Next
 import { type ReactNode } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+
+// ** Components
 import { Card } from "@/components/ui/card";
 
 interface Challenge {
@@ -106,4 +109,4 @@ export function Challenges(): ReactNode {
       </div>
     </Card>
   );
-} 
+}
