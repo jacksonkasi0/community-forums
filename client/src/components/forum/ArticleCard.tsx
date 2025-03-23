@@ -43,6 +43,9 @@ export function ArticleCard({ article }: ArticleCardProps) {
             alt={article.title}
             fill
             className="object-cover"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={75}
           />
         </div>
         <div className="p-4">
@@ -57,6 +60,9 @@ export function ArticleCard({ article }: ArticleCardProps) {
               width={24}
               height={24}
               className="rounded-full"
+              loading="lazy"
+              sizes="24px"
+              quality={75}
             />
             <span className="text-sm">{article.user.name}</span>
             <span className="text-sm text-muted-foreground">
