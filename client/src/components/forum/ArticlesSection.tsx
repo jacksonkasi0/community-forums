@@ -10,8 +10,8 @@ import { useQueryState } from "nuqs";
 import { DevToArticle, fetchDevToArticles } from "@/api/dev/devto";
 
 // ** Components
-import { ArticleCard } from "./ArticleCard";
-import FeedSkeleton from "../feed/FeedSkeleton";
+import { ArticleCard } from "@/components/forum/ArticleCard";
+import FeedSkeleton from "@/components/feed/FeedSkeleton";
 
 // ** Utils
 import { searchArticles } from "@/lib/utils/fuzzySearch";

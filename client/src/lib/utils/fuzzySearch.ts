@@ -1,10 +1,9 @@
-
 // ** Third Party lib
 // @ts-ignore
 import Fuse from "fuse.js";
 
-// ** api
-import { DevToArticle } from "../../api/dev/devto";
+// ** API
+import { DevToArticle } from "@/api/dev/devto";
 
 export function createFuzzySearch(articles: DevToArticle[]) {
   return new Fuse(articles, {
