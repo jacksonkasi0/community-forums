@@ -6,9 +6,10 @@ interface PageProps {
   params: {
     slug: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function DiscussPage({ params }: PageProps) {
+export default async function DiscussPage({ params, searchParams }: PageProps) {
   const { slug } = params;
 
   if (!slug) {
