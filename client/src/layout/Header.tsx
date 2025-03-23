@@ -57,7 +57,7 @@ const Header = () => {
       )}
       style={{ transform: `translateY(-${headerOffset}px)` }}
     >
-      <div className="max-w-7xl mx-auto h-full">
+      <div className="max-w-[1440px] mx-auto h-full">
         <div className="flex items-center justify-between h-full space-x-2">
           <SidebarTrigger className="md:hidden p-4"  />
 

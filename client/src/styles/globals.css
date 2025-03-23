@@ -18,6 +18,9 @@
       opacity: 0;
     }
   }
+
+  /* Breakpoints */
+  --breakpoint-8xl: 90rem; /* 1440px */
 }
 
 :root {
