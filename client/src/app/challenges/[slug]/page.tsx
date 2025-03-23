@@ -15,9 +15,9 @@ import { challenges } from "@/app/challenges/data";
 
 // ** Types
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // ** Server Functions
@@ -33,7 +33,8 @@ async function getChallenge(slug: string): Promise<Challenge | null> {
 }
 
 // ** Component
-export default async function ChallengePage({ params }: PageProps) {
+export default async function ChallengePage(props: PageProps) {
+  const params = await props.params;
   const { slug } = params;
 
   // If no slug is provided, return 404
@@ -147,7 +148,8 @@ export default async function ChallengePage({ params }: PageProps) {
   }
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const { slug } = params;
   return {
     title: `${slug.charAt(0).toUpperCase() + slug.slice(1)} Challenge`,

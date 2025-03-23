@@ -3,7 +3,8 @@ import { Metadata } from "next";
 // ** UI Components
 import { Card } from "@/components/ui/card";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { slug } = params;
 
   return (
@@ -20,7 +21,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
   );
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   return {
     title: `#${params.slug}`,
     description: `Posts tagged with #${params.slug}`,
