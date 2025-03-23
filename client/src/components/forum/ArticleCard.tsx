@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 
 interface ArticleCardProps {
   article: DevToArticle;
+  isFirstCard?: boolean;
 }
 
 // Function to extract direct S3 URL from CDN URL
@@ -30,27 +31,29 @@ function getDirectImageUrl(cdnUrl: string): string {
   }
 }
 
-export function ArticleCard({ article }: ArticleCardProps) {
+export function ArticleCard({ article, isFirstCard = false }: ArticleCardProps) {
   const socialImageUrl = getDirectImageUrl(article.social_image);
   const profileImageUrl = getDirectImageUrl(article.user.profile_image_90);
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <Link href={article.url} target="_blank" rel="noopener noreferrer">
-        <div className="relative h-48 w-full">
-          <Image
-            src={socialImageUrl}
-            alt={article.title}
-            fill
-            className="object-cover"
-            loading="lazy"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            quality={75}
-          />
-        </div>
+        {isFirstCard && (
+          <div className="relative h-48 w-full">
+            <Image
+              src={socialImageUrl}
+              alt={article.title}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              quality={75}
+            />
+          </div>
+        )}
         <div className="p-4">
           <h3 className="text-lg font-semibold mb-2 line-clamp-2">{article.title}</h3>
-          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+          <p className={`text-sm text-muted-foreground mb-3 ${isFirstCard ? 'line-clamp-2' : 'line-clamp-3'}`}>
             {article.description}
           </p>
           <div className="flex items-center gap-2 mb-3">

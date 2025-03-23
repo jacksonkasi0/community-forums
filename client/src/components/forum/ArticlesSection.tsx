@@ -68,8 +68,12 @@ export function ArticlesSection() {
             {error}
           </div>
         ) : filteredArticles.length > 0 ? (
-          filteredArticles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+          filteredArticles.map((article, index) => (
+            <ArticleCard 
+              key={article.id} 
+              article={article} 
+              isFirstCard={index === 0}
+            />
           ))
         ) : (
           <div className="col-span-full text-center py-8 text-muted-foreground">
