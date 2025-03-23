@@ -1,6 +1,11 @@
 // ** Custom Components
 import AsidePrimarySidebar from "@/components/custom-sidebar";
 import { ArticlesSection } from "@/components/forum/ArticlesSection";
+import { 
+  ActiveDiscussions, 
+  Challenges, 
+  DiscussionThreads 
+} from "@/components/right-sidebar";
 
 export default function Home() {
   return (
@@ -21,8 +26,10 @@ export default function Home() {
       </main>
 
       {/* Right Sidebar: hidden on screens smaller than lg; 3 columns on lg */}
-      <aside className="hidden lg:block lg:col-span-3 py-6">
-        <h1 className="text-2xl font-bold text-foreground">Right Sidebar</h1>
+      <aside className="hidden lg:block lg:col-span-3 py-6 space-y-6">
+        <ActiveDiscussions />
+        <Challenges />
+        <DiscussionThreads />
       </aside>
     </div>
   );
