@@ -49,11 +49,11 @@ export function DiscussionCategories(): ReactNode {
   return (
     <div className="space-y-6">
       <Card className="p-4 bg-sidebar/10 dark:bg-sidebar">
-        <h2 className="text-xl font-bold mb-2 text-sidebar-foreground">#discuss</h2>
-        <p className="text-sm text-sidebar-muted mb-4">
+        <h2 className="text-xl font-bold text-sidebar-foreground">#discuss</h2>
+        <p className="text-sm text-sidebar-muted">
           Discussion threads targeting the whole community
         </p>
-        <div className="space-y-0 divide-y divide-sidebar-border">
+        <div className="divide-y divide-sidebar-border">
           {discussionThreads.map((thread, index) => (
             <Link 
               href={thread.href}
