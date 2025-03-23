@@ -1,7 +1,6 @@
-
 // ** Custom Components
 import AsidePrimarySidebar from "@/components/custom-sidebar";
-import FeedSkeleton from "@/components/feed/FeedSkeleton";
+import { ArticlesSection } from "@/components/forum/ArticlesSection";
 
 export default function Home() {
   return (
@@ -13,9 +12,11 @@ export default function Home() {
 
       {/* Main Content: full width on small screens; 8 columns on md, 6 columns on lg */}
       <main className="col-span-12 md:col-span-8 lg:col-span-6 space-y-6 py-6">
-        <h1 className="text-2xl font-bold text-foreground">Feed</h1>
-        <div className="grid gap-6">
-          <FeedSkeleton count={50} />
+        <h2 className="text-2xl font-bold text-foreground mb-6">
+          Featured Articles
+        </h2>
+        <div className="mt-12">
+          <ArticlesSection />
         </div>
       </main>
 
