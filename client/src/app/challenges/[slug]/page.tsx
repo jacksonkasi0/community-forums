@@ -70,7 +70,7 @@ export default async function ChallengePage({ params }: PageProps) {
         <div className="space-y-8">
           {/* Main Content */}
           <Card className="p-6 bg-card">
-            <div className="prose dark:prose-invert max-w-none">
+            <div className="prose dark:prose-invert max-w-none space-y-4">
               <h2 className="text-2xl font-bold mb-4">{challenge.header.badge}</h2>
               <p className="text-muted-foreground mb-4">
                 {challenge.description}
