@@ -39,7 +39,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="pt-16"> {/* Fixed padding for constant header height */}
           {/* Mobile search bar below header */}
           {isMobileSearchVisible && (
-            <div className="md:hidden bg-background border-b border-border px-4 sm:px-6 lg:px-8 pb-4">
+            <div className="md:hidden bg-background border-b border-border px-4 sm:px-6 lg:px-8 pb-4 mt-4">
               <Suspense>
                 <SearchBar />
               </Suspense>
