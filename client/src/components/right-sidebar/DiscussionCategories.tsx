@@ -83,7 +83,7 @@ export function DiscussionCategories(): ReactNode {
       </Card>
 
       <Card className="p-4 bg-sidebar/10 dark:bg-sidebar">
-        <h2 className="text-xl font-bold mb-2 text-sidebar-foreground">#watercooler</h2>
+        <h2 className="text-xl font-bold text-sidebar-foreground">#watercooler</h2>
         <p className="text-sm text-sidebar-muted">
           Light, and off-topic conversation.
         </p>
