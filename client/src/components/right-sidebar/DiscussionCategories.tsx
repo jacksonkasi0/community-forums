@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 
@@ -41,12 +42,12 @@ const discussionThreads: DiscussionThread[] = [
   }
 ];
 
-export function DiscussionCategories() {
+export function DiscussionCategories(): ReactNode {
   return (
     <div className="space-y-6">
-      <Card className="p-4 bg-sidebar">
+      <Card className="p-4 bg-sidebar/10 dark:bg-sidebar">
         <h2 className="text-xl font-bold mb-2 text-sidebar-foreground">#discuss</h2>
-        <p className="text-[15px] text-sidebar-muted mb-4">
+        <p className="text-sm text-sidebar-muted mb-4">
           Discussion threads targeting the whole community
         </p>
         <div className="space-y-0 divide-y divide-sidebar-border">
@@ -58,17 +59,17 @@ export function DiscussionCategories() {
             >
               <div className="space-y-1">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-[15px] leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-sm leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
                     {thread.title}
                   </h3>
                   {thread.isNew && (
-                    <span className="shrink-0 bg-[#ffd900] text-black text-[13px] px-2 py-0.5 rounded-full font-medium">
+                    <span className="shrink-0 bg-yellow-400 text-black text-xs px-2 py-0.5 rounded-full font-medium">
                       New
                     </span>
                   )}
                 </div>
                 {thread.commentsCount && (
-                  <p className="text-[13px] text-sidebar-muted">
+                  <p className="text-xs text-sidebar-muted">
                     {thread.commentsCount} comment{thread.commentsCount !== 1 ? 's' : ''}
                   </p>
                 )}
@@ -78,9 +79,9 @@ export function DiscussionCategories() {
         </div>
       </Card>
 
-      <Card className="p-4 bg-sidebar">
+      <Card className="p-4 bg-sidebar/10 dark:bg-sidebar">
         <h2 className="text-xl font-bold mb-2 text-sidebar-foreground">#watercooler</h2>
-        <p className="text-[15px] text-sidebar-muted">
+        <p className="text-sm text-sidebar-muted">
           Light, and off-topic conversation.
         </p>
       </Card>

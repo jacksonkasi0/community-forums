@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
@@ -39,26 +40,26 @@ const challenges: Challenge[] = [
   },
 ];
 
-export function Challenges() {
+export function Challenges(): ReactNode {
   return (
-    <Card className="p-4 bg-sidebar">
-      <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-[15px] font-bold text-sidebar-foreground">What's happening this week</h2>
+    <Card className="p-4 bg-sidebar/10 dark:bg-sidebar">
+      <div className="flex items-center gap-2">
+        <h2 className="text-sm font-bold text-sidebar-foreground">What's happening this week</h2>
       </div>
 
       <div className="space-y-4">
         <div>
-          <h3 className="text-[15px] mb-3 flex items-center gap-2 text-sidebar-foreground">
+          <h3 className="text-sm mb-3 flex items-center gap-2 text-sidebar-foreground">
             Challenges <span className="text-base">🎮</span>
           </h3>
 
-          <div className="space-y-4 divide-y divide-sidebar-border">
+          <div className="space-y-1 divide-y divide-sidebar-border">
             {challenges.map((challenge, index) => (
               <div key={index} className="space-y-2 pt-4 first:pt-0">
                 {index === 0 && (
                   <div className="flex items-center gap-1.5 mb-2">
                     <span className="text-base">🚀</span>
-                    <span className="text-[13px] font-medium text-sidebar-foreground">Just Launched</span>
+                    <span className="text-xs font-medium text-sidebar-foreground">Just Launched</span>
                   </div>
                 )}
                 <Link 
@@ -76,17 +77,17 @@ export function Challenges() {
                     </div>
                     <div>
                       <div className="flex items-start gap-1.5">
-                        <h4 className="text-[15px] leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
+                        <h4 className="text-sm leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
                           {challenge.title}
                         </h4>
                         {challenge.emoji && (
                           <span className="text-base shrink-0 leading-tight">{challenge.emoji}</span>
                         )}
                       </div>
-                      <p className="text-[13px] text-sidebar-muted mt-1">
+                      <p className="text-xs text-sidebar-muted mt-1">
                         {challenge.description}
                       </p>
-                      <p className="text-[13px] text-sidebar-muted mt-1.5 font-medium">
+                      <p className="text-xs text-sidebar-muted my-2 font-medium">
                         {challenge.period}
                       </p>
                     </div>
@@ -98,7 +99,7 @@ export function Challenges() {
         </div>
 
         <div className="pt-2">
-          <p className="text-[15px] flex items-center gap-2 text-sidebar-foreground">
+          <p className="text-sm flex items-center gap-2 text-sidebar-foreground">
             Have a great week <span className="text-base">❤️</span>
           </p>
         </div>

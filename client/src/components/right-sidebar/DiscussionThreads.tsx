@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 
@@ -54,13 +55,13 @@ const discussionThreads: DiscussionThread[] = [
   }
 ];
 
-export function DiscussionThreads() {
+export function DiscussionThreads(): ReactNode {
   return (
-    <Card className="p-4 bg-sidebar">
+    <Card className="p-4 bg-sidebar/10 dark:bg-sidebar">
       <h2 className="text-xl font-bold mb-2 text-sidebar-foreground">Active discussions</h2>
       <div className="space-y-0 divide-y divide-sidebar-border">
         {discussionThreads.map((thread, index) => (
-          <Link 
+          <Link
             key={index}
             href={thread.href}
             className="block py-3 group"
@@ -70,11 +71,11 @@ export function DiscussionThreads() {
                 {thread.emoji && (
                   <span className="text-base shrink-0 leading-tight">{thread.emoji}</span>
                 )}
-                <h3 className="text-[15px] leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-sm leading-tight font-normal text-sidebar-foreground group-hover:text-primary transition-colors">
                   {thread.title}
                 </h3>
               </div>
-              <p className="text-[13px] text-sidebar-muted">
+              <p className="text-xs text-sidebar-muted">
                 {thread.commentsCount} comment{thread.commentsCount !== 1 ? 's' : ''}
               </p>
             </div>
