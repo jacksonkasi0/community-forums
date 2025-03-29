@@ -44,9 +44,9 @@ export default async function ChallengePage(props: PageProps) {
 
   // Get challenge data from our challenges data folder
   try {
-    const challenge = await import(`../data/${slug}`).then(
-      (mod) => mod[`${slug}Challenge`]
-    );
+     // Get challenge data
+  const challenge = await getChallenge(slug);
+
 
     if (!challenge) {
       notFound();
