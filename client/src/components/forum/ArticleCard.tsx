@@ -39,8 +39,8 @@ function getRandomReadTime(): number {
 }
 
 export function ArticleCard({ article, isFirstCard = false }: ArticleCardProps) {
-  const socialImageUrl = getDirectImageUrl(article.social_image);
-  const profileImageUrl = getDirectImageUrl(article.user.profile_image_90);
+  const socialImageUrl = getDirectImageUrl(article.social_image!);
+  const profileImageUrl = getDirectImageUrl(article.user.profile_image_90!);
   const readTime = getRandomReadTime();
 
   const handleCommentClick = (e: React.MouseEvent) => {
@@ -87,7 +87,7 @@ export function ArticleCard({ article, isFirstCard = false }: ArticleCardProps) 
               <div className="flex flex-col">
                 <span className="font-medium">{article.user.name}</span>
                 <span className="text-sm text-muted-foreground">
-                  {formatDistanceToNow(new Date(article.published_at), { addSuffix: true })}
+                  {formatDistanceToNow(new Date(article.published_at!), { addSuffix: true })}
                 </span>
               </div>
             </div>
