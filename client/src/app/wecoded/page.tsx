@@ -88,7 +88,7 @@ export default function WecodedPage() {
         <div className="grid md:grid-cols-2 gap-16 mb-24 max-w-5xl mx-auto">
           <div>
             <div className="flex items-start gap-6">
-              <div className="border-2 border-gray-300 dark:border-white/30 rounded-full p-4 dark:bg-white/10 ">
+              <div className="border-2 border-gray-300 dark:border-white/30 rounded-full p-4 dark:bg-white/40 ">
                 <Image
                   src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rnta1kb87lchhgwtizso.png"
                   alt="Icon 1"
